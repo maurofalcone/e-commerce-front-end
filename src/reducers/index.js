@@ -3,8 +3,7 @@ import products from './products'
 import categories from './categories'
 const rootReducer = combineReducers({
   products,
-  categories,
-  pages
+  categories
 })
 
 export default rootReducer
