@@ -15,8 +15,8 @@ class Navbar extends Component {
         </div>
         <div class="nav-content blue">
           <ul class="tabs tabs-transparent">
-            <li class="tab"><Link to="/">Categories</Link></li>
-            <li class="tab"><Link to="/">Products</Link></li>
+            <li class="tab"><Link to="/categories">Categories</Link></li>
+            <li class="tab"><Link to="/products">Products</Link></li>
           </ul>
         </div>
       </nav>
