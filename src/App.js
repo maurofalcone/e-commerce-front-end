@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { BrowserRouter as Router, Route } from "react-router-dom"
+import CategorieList from "./components/pages/categories/view"
 import Landing from "./components/layout/landing/view"
 import Login from "./components/auth/login/view"
 import Navbar from "./components/layout/navbar/view"
@@ -16,6 +17,7 @@ class App extends Component {
           <Route exact path="/register" component={Register}/>
           <Route exact path="/login" component={Login}/>
           <Route exact path="/products" component={ProductList}/>
+          <Route exact path="/categories" component={CategorieList}/>
         </div>
       </Router>
     )

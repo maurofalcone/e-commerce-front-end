@@ -1,25 +1,26 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { ReactDOM, Component } from "react"
+import { Link } from "react-router-dom"
 
 class Navbar extends Component {
+
   render() {
     return (
-      <nav class="nav-extended">
-        <div class="nav-wrapper blue">
-          <Link to="/" class="brand-logo"><i class="material-icons large">shopping_cart</i>Store</Link>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><Link to="/register">Register</Link></li>
-            <li><Link to="/login">Log in</Link></li>
-            <li class="tab right"><Link to="myCart"><i class="material-icons">shopping_cart</i></Link></li>
-          </ul>
-        </div>
-        <div class="nav-content blue">
-          <ul class="tabs tabs-transparent">
-            <li class="tab"><Link to="/categories">Categories</Link></li>
-            <li class="tab"><Link to="/products">Products</Link></li>
-          </ul>
-        </div>
-      </nav>
+        <nav className="nav-extended">
+          <div className="nav-wrapper blue">
+            <Link to="/" className="brand-logo"><i className="material-icons large">shopping_cart</i>Store</Link>
+            <ul id="nav-mobile" className="right hide-on-med-and-down">
+              <li><Link to="/register">Register</Link></li>
+              <li><Link to="/login">Log in</Link></li>
+              <li className="tab right"><Link to="myCart"><i className="material-icons">shopping_cart</i></Link></li>
+            </ul>
+          </div>
+          <div className="nav-content blue">
+            <ul className="tabs tabs-transparent">
+              <li className="tab"><Link to="/categories">Categories</Link></li>
+              <li className="tab"><Link to="/products">Products</Link></li>
+            </ul>
+          </div>
+        </nav>
     );
   }
 }

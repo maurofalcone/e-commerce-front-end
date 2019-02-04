@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 
-class ProductList extends Component {
+class Product extends Component {
   constructor() {
     super()
     this.state = {
@@ -34,4 +34,4 @@ class ProductList extends Component {
     )
   }
 }
-export default ProductList
+export default Product
