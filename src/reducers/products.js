@@ -6,6 +6,9 @@ import {
   ADD_PRODUCT_PENDING,
   ADD_PRODUCT_FULLFILED,
   ADD_PRODUCT_REJECTED,
+  MODIFY_PRODUCT_PENDING,
+  MODIFY_PRODUCT_FULLFILED,
+  MODIFY_PRODUCT_REJECTED,
   DELETE_PRODUCT_PENDING,
   DELETE_PRODUCT_FULLFILED,
   DELETE_PRODUCT_REJECTED,
@@ -65,6 +68,30 @@ const reducer = (state = initialState, action) => {
         isLoading: false,
         error: action.errorMsg
       }
+
+      case MODIFY_PRODUCT_PENDING:
+        return {
+            ...state,
+            error: '',
+            isLoading: true
+        }
+
+      // case MODIFY_PRODUCT_FULLFILED:
+      //   return {
+      //     ...state,
+      //     error: '',
+      //     isLoading: false,
+      //     list: state.list.filter(
+      //       item => item.id !== action.productId
+      //     )
+      //   }
+      
+      case MODIFY_PRODUCT_REJECTED:
+        return {
+          ...state,
+          error: action.errorMsg,
+          isLoading: false
+        }
 
     case DELETE_PRODUCT_PENDING:
       return {

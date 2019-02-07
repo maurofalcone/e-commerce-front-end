@@ -51,6 +51,27 @@ export const addProductThunk = item => dispatch => {
     })
   }
 
+export const modifyProductThunk = item => dispatch => {
+  dispatch({
+    type: MODIFY_PRODUCT_PENDING
+  })
+  put('/products/'+item.id)
+    .then((res) => {
+      dispatch({
+        type: DELETE_PRODUCT_FULLFILED
+        idProduct: item.id
+      })
+      dispatch({
+        type: ADD_PRODUCT_FULLFILED,
+        product: res.item
+      })
+    })
+    .catch(errMsg => {
+      type:MODIFY_PRODUCT_REJECTED,
+      errorMsg: 'No se pudo editar el item'
+    })
+}
+
 export const deleteProductThunk = id => dispatch => {
   dispatch({
     type: DELETE_PRODUCT_PENDING
