@@ -1,12 +1,15 @@
 import initialState from '../initial-states/products'
 import {
-  DELETE_PRODUCT,
   GET_PRODUCTS_PENDING,
   GET_PRODUCTS_FULLFILED,
   GET_PRODUCTS_REJECTED,
   ADD_PRODUCT_PENDING,
   ADD_PRODUCT_FULLFILED,
-  ADD_PRODUCT_REJECTED
+  ADD_PRODUCT_REJECTED,
+  DELETE_PRODUCT_PENDING,
+  DELETE_PRODUCT_FULLFILED,
+  DELETE_PRODUCT_REJECTED,
+
 } from '../actions/products'
 
 const reducer = (state = initialState, action) => {
@@ -33,7 +36,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        error: action.err
+        error: action.errorMsg
       }
 
     case ADD_PRODUCT_PENDING:
@@ -63,14 +66,28 @@ const reducer = (state = initialState, action) => {
         error: action.errorMsg
       }
 
-    case DELETE_PRODUCT:
+    case DELETE_PRODUCT_PENDING:
+      return {
+          ...state,
+          error: '',
+          isLoading: true
+      }
+
+    case DELETE_PRODUCT_FULLFILED:
       return {
         ...state,
+        error: '',
+        isLoading: false,
         list: state.list.filter(
           item => item.id !== action.productId
         )
       }
-
+    case DELETE_PRODUCT_REJECTED:
+      return {
+        ...state,
+        error: action.errorMsg,
+        isLoading: false
+      }
     default:
       return state
 
