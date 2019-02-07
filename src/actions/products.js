@@ -51,7 +51,21 @@ export const addProductThunk = item => dispatch => {
     })
   }
 
-export const deleteProduct = id => ({
-  type: DELETE_PRODUCT,
-  productId: id
-})
+export const deleteProductThunk = id => dispatch => {
+  dispatch({
+    type: DELETE_PRODUCT_PENDING
+  })
+  post('/products', id)
+    .then(() => {
+      dispatch({
+        type: DELETE_PRODUCT_FULLFILED,
+        productId: id
+      })
+    })
+    .catch(errMsg => {
+      dispatch({
+        type: DELETE_PRODUCT_REJECTED,
+        errorMsg: 'No se pudo eliminar el item'
+      })
+    })
+}
