@@ -1,6 +1,6 @@
 import React, { Component } from "react"
-import ProductTable from "./product/view"
-import "style.css"
+import AdminProductTable from "./product/view"
+import "./style.css"
 
 class AdminProductList extends Component {
 
@@ -19,7 +19,7 @@ class AdminProductList extends Component {
   getProducts() {
     const { products } = this.props
      return products.map(item => (
-         <ProductTable key={item.id} id={item.id} name={item.name} price={item.price} description={item.description}/>
+         <AdminProductTable key={item.id} id={item.id} name={item.name} price={item.price} description={item.description}/>
     ))
   }
 

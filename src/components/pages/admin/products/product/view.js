@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import "./style.css"
 
-class ProductTable extends Component {
+class AdminProductTable extends Component {
   constructor(props) {
     super(props)
     this.state = {
