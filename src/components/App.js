@@ -6,6 +6,7 @@ import Login from "./auth/login/view"
 import Navbar from "./layout/navbar/view"
 import ProductList from "./pages/products/view"
 import Register from "./auth/register/view"
+import AdminProductList from "./pages/admin/products/"
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
           <Route exact path="/login" component={Login}/>
           <Route exact path="/products" component={ProductList}/>
           <Route exact path="/categories" component={CategorieList}/>
+          <Route exact path="/admin/products" component={AdminProductList}/>
         </div>
       </Router>
     )
