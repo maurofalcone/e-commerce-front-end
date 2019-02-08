@@ -1,13 +1,13 @@
 import jwt_decode from "jwt-decode"
 import { post } from "../helpers/api"
-import { isEmpty } from "is-empty"
 
-export const GET_ERRORS = "GET_ERRORS";
-export const USER_LOADING = "USER_LOADING";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 export const REGISTER_USER_PENDING = "REGISTER_USER_PENDING"
 export const REGISTER_USER_FULLFILED = "REGISTER_USER_FULLFILED"
 export const REGISTER_USER_REJECTED = "REGISTER_USER_REJECTED"
+export const LOGIN_USER_PENDING = "LOGIN_USER_PENDING"
+export const LOGIN_USER_FULLFILED = "LOGIN_USER_FULLFILED"
+export const LOGIN_USER_REJECTED = "LOGIN_USER_REJECTED"
 
 // Register User
 export const registerUserThunk = (userData, history) => dispatch => {
@@ -16,17 +16,19 @@ export const registerUserThunk = (userData, history) => dispatch => {
   })
   post('/users/register', userData)
   .then(res => {
-    type: REGISTER_USER_FULLFILED,
-    history.push("/login") }) // re-direct to login on successful register
+    dispatch({
+      type: REGISTER_USER_FULLFILED
+    })
+    history.push("/login") // re-direct to login on successful register
+})
   .catch(error => {
       dispatch({
             type: REGISTER_USER_REJECTED,
             errorMsg: error.data
           })
         }
-      })
-  )
-}
+      )
+    }
 // Login - get user token
 export const loginUserThunk = userData => dispatch => {
   dispatch({
@@ -34,7 +36,9 @@ export const loginUserThunk = userData => dispatch => {
   })
     post("/users/login", userData)
     .then(res => {
+      dispatch({
       type: LOGIN_USER_FULLFILED
+    })
       // Save to localStorage
 // Set token to localStorage
       const { token } = res.data
@@ -52,8 +56,7 @@ export const loginUserThunk = userData => dispatch => {
           type: LOGIN_USER_REJECTED,
           errorMsg: error.data
         })
-      })
-    )
+      )
 }
 // Set logged in user
 export const setCurrentUser = decoded => {

@@ -6,9 +6,8 @@ import {
   REGISTER_USER_REJECTED,
   LOGIN_USER_PENDING,
   LOGIN_USER_FULLFILED,
-  LOGIN_USER_REJECTED
-
-
+  LOGIN_USER_REJECTED,
+  SET_CURRENT_USER
 } from '../actions/auth'
 
 const reducer = (state = initialState, action) => {
@@ -66,17 +65,9 @@ const reducer = (state = initialState, action) => {
           user: action.payload
         }
 
-      case USER_LOADING:
-        return {
-          ...state,
-          loading: true
-        }
-
-    default:
-      return state
-
+      default:
+        return state
   }
-
 }
 
 export default reducer

@@ -7,12 +7,10 @@ import {
   ADD_PRODUCT_FULLFILED,
   ADD_PRODUCT_REJECTED,
   MODIFY_PRODUCT_PENDING,
-  MODIFY_PRODUCT_FULLFILED,
   MODIFY_PRODUCT_REJECTED,
   DELETE_PRODUCT_PENDING,
   DELETE_PRODUCT_FULLFILED,
   DELETE_PRODUCT_REJECTED,
-
 } from '../actions/products'
 
 const reducer = (state = initialState, action) => {
@@ -85,7 +83,7 @@ const reducer = (state = initialState, action) => {
       //       item => item.id !== action.productId
       //     )
       //   }
-      
+
       case MODIFY_PRODUCT_REJECTED:
         return {
           ...state,
