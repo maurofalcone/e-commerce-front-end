@@ -1,12 +1,12 @@
-#addProduct, #editProduct {
+#editProduct {
   margin-right: 5%;
 }
 
-#addProduct:hover, #editProduct:hover, #deleteProduct:hover {
+#editProduct:hover, #deleteProduct:hover {
   color: #2196F3;
   cursor: pointer;
 }
-#addProduct, #editProduct, #deleteProduct {
+#editProduct, #deleteProduct {
   border-style: none;
   background-color: white;
 }

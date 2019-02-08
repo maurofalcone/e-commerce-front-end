@@ -27,7 +27,6 @@ class AdminProductTable extends Component {
             <td>{this.state.price}</td>
             <td>{this.state.description}</td>
             <td>
-              <button id="addProduct" onClick={this.handleAdd}><i className="material-icons small">add_box</i></button>
               <button id="editProduct" onClick={this.handleEdit}><i className="material-icons small">edit</i></button>
               <button id="deleteProduct" onClick={this.handleDelete}><i className="material-icons small">delete</i></button>
             </td>

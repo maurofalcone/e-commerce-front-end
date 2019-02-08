@@ -1,3 +1,27 @@
 #admin-product-list-container {
   height: 75vh;
 }
+#addProduct {
+  border-style: none;
+  background-color: white;
+}
+#addProduct:hover {
+  color: #2196F3;
+  cursor: pointer;
+}
+#productDescription {
+  height: 25vh;
+  resize: none;
+  margin-top: 10px;
+}
+#addProductSave {
+  width: "150px";
+  border-radius: "3px";
+  letter-spacing: "1.5px";
+  margin-right: 2rem;
+}
+#addProductCancel {
+  width: "150px";
+  border-radius: "3px";
+  letter-spacing: "1.5px";
+}
