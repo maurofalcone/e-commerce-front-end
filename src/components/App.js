@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import CategorieList from "./pages/categories/view"
 import Landing from "./layout/landing/view"
 import Login from "./auth/login/view"

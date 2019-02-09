@@ -5,7 +5,7 @@ import { addProductThunk, getProductsThunk, editProductThunk } from '../../../..
 const mapStateToProps = state => ({
   products: state.products.list,
   isLoading: state.products.isLoading,
-  errorMessage: state.products.error,
+  error: state.products.error,
   action: state.actions.action,
   shown: state.actions.shown,
   item: state.actions.item

@@ -27,10 +27,9 @@ export const getProductsThunk = () => dispatch => {
       })
     })
     .catch(err => {
-      console.log("err: ", err);
       dispatch({
         type: GET_PRODUCTS_REJECTED,
-        err
+        error: err
       })
     })
 }
@@ -51,7 +50,7 @@ export const addProductThunk = item => dispatch => {
     .catch(errMsg => {
       dispatch({
         type: ADD_PRODUCT_REJECTED,
-        errorMsg: 'No se pudo agregar el item'
+        error: errMsg
       })
       console.log('add product rejected');
     })
@@ -72,7 +71,7 @@ export const editProductThunk = item => dispatch => {
     .catch(errMsg => {
       dispatch({
         type: EDIT_PRODUCT_REJECTED,
-        errorMsg: 'No se pudo editar el item'
+        error: errMsg
       })
     })
 }
@@ -91,7 +90,7 @@ export const deleteProductThunk = id => dispatch => {
     .catch(errMsg => {
       dispatch({
         type: DELETE_PRODUCT_REJECTED,
-        errorMsg: 'No se pudo eliminar el item'
+        error: errMsg
       })
     })
 }

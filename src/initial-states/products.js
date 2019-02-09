@@ -1,6 +1,6 @@
 const products = {
   list: [],
-  error: null,
+  error: [{name:null,price:null,description:null,image:null,message:null}],
   isLoading: false
 }
 

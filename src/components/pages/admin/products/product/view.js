@@ -25,7 +25,7 @@ class AdminProductTable extends Component {
 
   handleDelete = (e) => {
     e.preventDefault()
-    //deleteProduct(this.state.id)
+    this.props.deleteProduct(this.state.id)
   }
 
   render() {
