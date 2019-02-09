@@ -1,19 +1,23 @@
-import React, {Component } from "react"
+import React, { Component } from "react"
 import Product from "./product/view"
 import './style.css'
 
 class ProductList extends Component {
+  constructor(props) {
+    super(props)
+    console.log('constructor');
+  }
 
-  componentWillMount() {
-      const { getProducts } = this.props
-      getProducts()
+  componentDidMount() {
+    this.props.getProducts()
   }
 
   mapProducts() {
     const { products } = this.props
-     return products.map(item => (
+     return ( products.map(item => (
          <Product key={item.id} id={item.id} name={item.name} price={item.price} description={item.description}/>
-    ))
+     ))
+   )
   }
 
   render() {

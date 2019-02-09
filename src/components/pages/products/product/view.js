@@ -2,13 +2,13 @@ import React, { Component } from "react"
 import { Link } from "react-router-dom"
 
 class Product extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      name:"Product name",
-      description:"description",
-      price:"500",
-      image:""
+      name:this.props.name,
+      description:this.props.description,
+      price:this.props.price,
+      image:this.props.image
     }
   }
 
