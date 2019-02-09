@@ -70,8 +70,6 @@ class AdminProductList extends Component {
   }
 
   modal() {
-    const { errorMessage } = this.props
-    console.log(errorMessage)
     if(this.state.action === 'edit') {
       this.setState({productName:this.props.item.name, productDescription:this.props.item.description, productPrice:this.props.item.price})
     }
@@ -81,17 +79,17 @@ class AdminProductList extends Component {
             <div className="input-field col s5">
               <input onChange={this.handleOnChange} value={this.state.productName} id="productName" type="text"/>
               <label htmlFor="name">Name</label>
-              //<span className="red-text">{this.errorMessage.name}</span>
+              <span className="red-text">{this.props.errorMessage.name}</span>
             </div>
             <div className="input-field col s5">
               <input onChange={this.handleOnChange} value={this.state.productPrice} id="productPrice" type="text"/>
               <label htmlFor="productPrice">Price</label>
-              //<span className="red-text">{this.errorMessage.price}</span>
+              <span className="red-text">{this.props.errorMessage.price}</span>
             </div>
             <div className="input-field col s5">
               <textarea onChange={this.handleOnChange} value={this.state.productDescription} id="productDescription" type="text"/>
               <label htmlFor="productDescription">Description</label>
-              //<span className="red-text">{this.errorMessage.description}</span>
+              <span className="red-text">{this.props.errorMessage.description}</span>
             </div>
             <button onClick={ this.handleSave } id="addProductSave" className="btn btn-large waves-effect waves-light hoverable blue"><span className="white-text">Save</span></button>
             <button onClick={ this.handleCancel } id="addProductCancel" className="btn btn-large waves-effect white hoverable black-text">Cancel</button>
