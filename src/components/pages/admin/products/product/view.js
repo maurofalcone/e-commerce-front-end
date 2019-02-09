@@ -14,7 +14,6 @@ class AdminProductTable extends Component {
 
   handleEdit = (e) => {
     e.preventDefault()
-    console.log('click edit');
     const item = {
       id:this.state.id,
       name:this.state.name,

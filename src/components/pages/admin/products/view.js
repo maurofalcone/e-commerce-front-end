@@ -15,8 +15,10 @@ class AdminProductList extends Component {
     }
   }
 
-  componentWillReceiveProps(props) {
-    this.setState({action:this.props.action, shown:this.props.shown})
+  componentWillReceiveProps(nextProps,props) {
+    if(this.props.action !== '' || null || undefined) {
+      this.setState({action:this.props.action, shown:!this.props.shown})
+    }
   }
 
   componentWillMount() {
@@ -26,9 +28,9 @@ class AdminProductList extends Component {
 
   mapProducts() {
     const { products } = this.props
-     return products.map(item => (
-         <AdminProductTable key={item.id} id={item.id} name={item.name} price={item.price} description={item.description}/>
-    ))
+      return products.map((item, index) => (
+          <AdminProductTable key={index} {...item}/>
+       ))
   }
 
   handleOnChange = (e) => {
@@ -39,12 +41,10 @@ class AdminProductList extends Component {
   handleAdd = (e) => {
     e.preventDefault()
     this.setState({ shown:!this.state.shown, action:'add' })
-    console.log('handle add ' + this.state.action)
   }
 
   handleSave = (e) => {
     e.preventDefault()
-    console.log(this.state.action);
     const newProduct = {
       name:this.state.productName,
       price:this.state.productPrice,
@@ -56,7 +56,6 @@ class AdminProductList extends Component {
         this.setState({shown:!this.state.shown})
     }
     else if(this.state.action === 'edit'){
-        console.log(this.props.action)
         this.props.editProduct(newProduct)
         this.setState({shown:!this.state.shown})
     }
