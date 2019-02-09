@@ -9,14 +9,19 @@ class AdminProductTable extends Component {
       id: this.props.id,
       name: this.props.name,
       description: this.props.description,
-      price: this.props.price,
-      action: null
+      price: this.props.price
     }
   }
 
   handleAdd = (e) => {
     e.preventDefault()
-    console.log("click")
+    console.log("edit click")
+  }
+
+  handleDelete = (e) => {
+    console.log(this.props);
+    e.preventDefault()
+    //deleteProduct(this.state.id)
   }
 
   render() {

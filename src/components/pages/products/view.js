@@ -1,17 +1,29 @@
 import React, {Component } from "react"
 import Product from "./product/view"
+import './style.css'
 
 class ProductList extends Component {
+  constructor(props) {
+    super(props)
+  }
 
-  getProducts = () => {
-    return <Product/>
+  componentWillMount() {
+      const { getProducts } = this.props
+      getProducts()
+  }
+
+  mapProducts() {
+    const { products } = this.props
+     return products.map(item => (
+         <Product key={item.id} id={item.id} name={item.name} price={item.price} description={item.description}/>
+    ))
   }
 
   render() {
     return (
-      <div style={{ height: "75vh" }} className="container halign-wrapper">
+      <div id="containerProductList" className="container halign-wrapper">
         <div className="row">
-          {this.getProducts()}
+          {this.mapProducts()}
         </div>
       </div>
     )

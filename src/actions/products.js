@@ -38,18 +38,21 @@ export const addProductThunk = item => dispatch => {
   dispatch({
     type: ADD_PRODUCT_PENDING,
   })
+  console.log('add product pending')
   post('/products', item)
     .then(() => {
       dispatch({
         type: ADD_PRODUCT_FULLFILED,
         product: item
       })
+      console.log('add product fullfiled');
     })
     .catch(errMsg => {
       dispatch({
         type: ADD_PRODUCT_REJECTED,
         errorMsg: 'No se pudo agregar el item'
       })
+      console.log('add product rejected');
     })
   }
 
@@ -58,16 +61,16 @@ export const modifyProductThunk = item => dispatch => {
     type: MODIFY_PRODUCT_PENDING
   })
   put('/products/'+item.id, item.id)
-    .then((res) => {
-      dispatch({
-        type: DELETE_PRODUCT_FULLFILED,
-        idProduct: item.id
-      })
-      dispatch({
-        type: ADD_PRODUCT_FULLFILED,
-        product: res.item
-      })
-    })
+    // .then((res) => {
+    //   dispatch({
+    //     type: DELETE_PRODUCT_FULLFILED,
+    //     idProduct: item.id
+    //   })
+    //   dispatch({
+    //     type: ADD_PRODUCT_FULLFILED,
+    //     product: res.item
+    //   })
+    // })
     .catch(errMsg => {
       dispatch({
         type: MODIFY_PRODUCT_REJECTED,

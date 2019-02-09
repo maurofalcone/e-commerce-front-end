@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import AdminProductTable from './view'
-import { deleteProductThunk } from '../../../../actions/products'
+import ProductList from './view'
+import { getProductsThunk } from '../../../actions/products'
 
 const mapStateToProps = state => ({
   products: state.products.list,
@@ -9,10 +9,10 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  deleteProduct: id => { dispatch(deleteProductThunk(id)) }
+  getProducts: () => { dispatch(getProductsThunk()) }
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AdminProductTable)
+)(ProductList)

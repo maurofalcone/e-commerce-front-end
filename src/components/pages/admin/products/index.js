@@ -5,7 +5,7 @@ import { addProductThunk, getProductsThunk } from '../../../../actions/products'
 const mapStateToProps = state => ({
   products: state.products.list,
   isLoading: state.products.isLoading,
-  errorMessage: state.products.error,
+  errorMessage: state.products.error
 })
 
 const mapDispatchToProps = dispatch => ({
