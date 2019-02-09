@@ -19,6 +19,9 @@ class AdminProductList extends Component {
     if(this.props.action !== '' || null || undefined) {
       this.setState({action:this.props.action, shown:!this.props.shown})
     }
+    if(this.props.action === 'edit'){
+        this.setState({action:this.props.action, shown:!this.props.shown})
+    }
   }
 
   componentWillMount() {
@@ -55,7 +58,7 @@ class AdminProductList extends Component {
         //move to another lifecycle
         this.setState({shown:!this.state.shown})
     }
-    else if(this.state.action === 'edit'){
+    else if(this.state.action === 'edit') {
         this.props.editProduct(newProduct)
         this.setState({shown:!this.state.shown})
     }

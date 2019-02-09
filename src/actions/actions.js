@@ -1,7 +1,9 @@
 export const EDIT = 'EDIT'
 
-export const edit = item => ({
-  type: EDIT,
-  action: 'edit',
-  item: item
-})
+export const edit = (item) => dispatch => {
+  console.log(item)
+  dispatch({
+    type: EDIT,
+    item: item
+  })
+}

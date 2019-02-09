@@ -20,7 +20,6 @@ class AdminProductTable extends Component {
       description:this.state.description,
       price:this.state.price
     }
-    //this.props.edit('edit')
     this.props.edit(item)
   }
 
