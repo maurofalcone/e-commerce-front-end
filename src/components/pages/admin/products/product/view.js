@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { Link } from "react-router-dom"
 import "./style.css"
 
 class AdminProductTable extends Component {
@@ -13,13 +12,20 @@ class AdminProductTable extends Component {
     }
   }
 
-  handleAdd = (e) => {
+  handleEdit = (e) => {
     e.preventDefault()
-    console.log("edit click")
+    console.log('click edit');
+    const item = {
+      id:this.state.id,
+      name:this.state.name,
+      description:this.state.description,
+      price:this.state.price
+    }
+    //this.props.edit('edit')
+    this.props.edit(item)
   }
 
   handleDelete = (e) => {
-    console.log(this.props);
     e.preventDefault()
     //deleteProduct(this.state.id)
   }

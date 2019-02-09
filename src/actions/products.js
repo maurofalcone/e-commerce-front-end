@@ -6,8 +6,9 @@ export const GET_PRODUCTS_REJECTED = 'GET_PRODUCTS_REJECTED'
 export const ADD_PRODUCT_PENDING = 'ADD_PRODUCT_PENDING'
 export const ADD_PRODUCT_FULLFILED = 'ADD_PRODUCT_FULLFILED'
 export const ADD_PRODUCT_REJECTED = 'ADD_PRODUCT_REJECTED'
-export const MODIFY_PRODUCT_PENDING = 'MODIFY_PRODUCT_PENDING'
-export const MODIFY_PRODUCT_REJECTED = 'MODIFY_PRODUCT_REJECTED'
+export const EDIT_PRODUCT_PENDING = 'EDIT_PRODUCT_PENDING'
+export const EDIT_PRODUCT_FULLFILED = 'EDIT_PRODUCT_FULLFILED'
+export const EDIT_PRODUCT_REJECTED = 'EDIT_PRODUCT_REJECTED'
 export const DELETE_PRODUCT_PENDING = 'DELETE_PRODUCT_PENDING'
 export const DELETE_PRODUCT_FULLFILED = 'DELETE_PRODUCT_FULLFILED'
 export const DELETE_PRODUCT_REJECTED = 'DELETE_PRODUCT_REJECTED'
@@ -56,24 +57,21 @@ export const addProductThunk = item => dispatch => {
     })
   }
 
-export const modifyProductThunk = item => dispatch => {
+export const editProductThunk = item => dispatch => {
   dispatch({
-    type: MODIFY_PRODUCT_PENDING
+    type: EDIT_PRODUCT_PENDING
   })
   put('/products/'+item.id, item.id)
-    // .then((res) => {
-    //   dispatch({
-    //     type: DELETE_PRODUCT_FULLFILED,
-    //     idProduct: item.id
-    //   })
-    //   dispatch({
-    //     type: ADD_PRODUCT_FULLFILED,
-    //     product: res.item
-    //   })
-    // })
+    .then((res) => {
+      dispatch({
+        type: EDIT_PRODUCT_FULLFILED,
+        product: item,
+        list: res
+      })
+    })
     .catch(errMsg => {
       dispatch({
-        type: MODIFY_PRODUCT_REJECTED,
+        type: EDIT_PRODUCT_REJECTED,
         errorMsg: 'No se pudo editar el item'
       })
     })

@@ -3,9 +3,6 @@ import Product from "./product/view"
 import './style.css'
 
 class ProductList extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentWillMount() {
       const { getProducts } = this.props

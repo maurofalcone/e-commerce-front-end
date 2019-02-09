@@ -11,13 +11,13 @@ class Product extends Component {
       image:""
     }
   }
-  
+
   render() {
     return (
       <div className="col s4">
       <div className="card" style={{height:"50vh",width:"20vw"}}>
           <div className="card-image waves-effect waves-block waves-light">
-            <img className="activator" style={{height:"35vh"}} src="" />
+            <img className="activator" style={{height:"35vh"}} src="" alt=""/>
           </div>
           <div className="card-content">
             <span className="card-title activator grey-text text-darken-4">{this.state.name}<i className="material-icons right">more_vert</i></span>

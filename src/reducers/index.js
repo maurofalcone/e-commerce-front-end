@@ -2,12 +2,12 @@ import { combineReducers } from 'redux'
 import auth from './auth'
 import products from './products'
 import categories from './categories'
-import utils from './utils'
+import actions from './actions'
 const rootReducer = combineReducers({
   auth,
   categories,
   products,
-  utils,
+  actions
 })
 
 export default rootReducer

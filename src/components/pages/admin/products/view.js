@@ -7,12 +7,16 @@ class AdminProductList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      shown:false,
+      shown:this.props.shown,
       productName:'',
       productDescription:'',
       productPrice:'',
-      action:''
+      action:this.props.action
     }
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({action:this.props.action, shown:this.props.shown})
   }
 
   componentWillMount() {
@@ -52,7 +56,9 @@ class AdminProductList extends Component {
         this.setState({shown:!this.state.shown})
     }
     else if(this.state.action === 'edit'){
-      console.log('editar')
+        console.log(this.props.action)
+        this.props.editProduct(newProduct)
+        this.setState({shown:!this.state.shown})
     }
   }
 
@@ -62,6 +68,9 @@ class AdminProductList extends Component {
   }
 
   modal() {
+    if(this.state.action === 'edit') {
+      this.setState({productName:this.props.item.name, productDescription:this.props.item.description, productPrice:this.props.item.price})
+    }
     return (
       <div>
           <form noValidate onSubmit={this.onSubmit}>
