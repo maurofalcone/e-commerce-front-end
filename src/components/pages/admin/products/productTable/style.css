@@ -1,12 +1,11 @@
 #editProduct {
   margin-right: 5%;
 }
-
 #editProduct:hover, #deleteProduct:hover {
-  color: #2196F3;
   cursor: pointer;
 }
 #editProduct, #deleteProduct {
   border-style: none;
   background-color: white;
+  color: #2196F3;
 }

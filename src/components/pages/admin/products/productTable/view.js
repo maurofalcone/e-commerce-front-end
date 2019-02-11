@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Link } from 'react-router-dom'
 import "./style.css"
 
 class AdminProductTable extends Component {
@@ -14,18 +15,13 @@ class AdminProductTable extends Component {
 
   handleEdit = (e) => {
     e.preventDefault()
-    const item = {
-      id:this.state.id,
-      name:this.state.name,
-      description:this.state.description,
-      price:this.state.price
-    }
-    this.props.edit(item)
+    this.props.getProductById(this.state.id)
+
   }
 
   handleDelete = (e) => {
     e.preventDefault()
-    this.props.deleteProduct(this.state.id)
+    this.props.deleteProduct(this.props.id)
   }
 
   render() {
@@ -36,7 +32,7 @@ class AdminProductTable extends Component {
             <td>{this.state.price}</td>
             <td>{this.state.description}</td>
             <td>
-              <button id="editProduct" onClick={this.handleEdit}><i className="material-icons small">edit</i></button>
+              <button id="editProduct" onClick={this.handleEdit}><Link to={`/admin/products/edit/${this.state.id}`}><i className="material-icons small">edit</i></Link></button>
               <button id="deleteProduct" onClick={this.handleDelete}><i className="material-icons small">delete</i></button>
             </td>
           </tr>
