@@ -6,9 +6,6 @@ const mapStateToProps = state => ({
   products: state.products.list,
   isLoading: state.products.isLoading,
   error: state.products.error,
-  action: state.actions.action,
-  shown: state.actions.shown,
-  item: state.actions.item
 })
 
 const mapDispatchToProps = dispatch => ({
