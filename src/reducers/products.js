@@ -3,6 +3,9 @@ import {
   GET_PRODUCTS_PENDING,
   GET_PRODUCTS_FULLFILED,
   GET_PRODUCTS_REJECTED,
+  GET_PRODUCT_PENDING,
+  GET_PRODUCT_FULLFILED,
+  GET_PRODUCT_REJECTED,
   ADD_PRODUCT_PENDING,
   ADD_PRODUCT_FULLFILED,
   ADD_PRODUCT_REJECTED,
@@ -40,6 +43,29 @@ const reducer = (state = initialState, action) => {
         isLoading: false,
         error: action.errorMsg
       }
+
+      case GET_PRODUCT_PENDING:
+        return {
+          ...state,
+          error: '',
+          isLoading: true
+        }
+
+      case GET_PRODUCT_FULLFILED: {
+        return {
+          ...state,
+          error: '',
+          isLoading: false,
+          list: action.list
+        }
+      }
+
+      case GET_PRODUCT_REJECTED:
+        return {
+          ...state,
+          isLoading: false,
+          error: action.errorMsg
+        }
 
     case ADD_PRODUCT_PENDING:
       return {
@@ -106,17 +132,17 @@ const reducer = (state = initialState, action) => {
           item => item.id !== action.productId
         )
       }
+
     case DELETE_PRODUCT_REJECTED:
       return {
         ...state,
         error: action.errorMsg,
         isLoading: false
       }
+
     default:
       return state
-
   }
-
 }
 
 export default reducer
