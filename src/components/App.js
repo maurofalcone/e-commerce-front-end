@@ -4,10 +4,11 @@ import CategorieList from "./pages/categories/view"
 import Landing from "./layout/landing/view"
 import Login from "./auth/login/view"
 import Navbar from "./layout/navbar/view"
-import ProductList from "./pages/products/"
+import ProductList from "./pages/products"
 import Register from "./auth/register/view"
-import AdminProductList from "./pages/admin/products/"
-
+import AdminProductList from "./pages/admin/products"
+import AddProduct from "./pages/admin/products/addProduct"
+import EditProduct from "./pages/admin/products/editProduct"
 class App extends Component {
   render() {
     return (
@@ -20,6 +21,8 @@ class App extends Component {
           <Route exact path="/products" component={ProductList}/>
           <Route exact path="/categories" component={CategorieList}/>
           <Route exact path="/admin/products" component={AdminProductList}/>
+          <Route exact path="/admin/products/add/" component={AddProduct}/>
+          <Route exact path="/admin/products/edit/:id" component={EditProduct}/>
         </div>
       </Router>
     )
