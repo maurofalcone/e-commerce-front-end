@@ -3,6 +3,9 @@ import { get, post, remove, put } from '../helpers/api'
 export const GET_PRODUCTS_PENDING = 'GET_PRODUCTS_PENDING'
 export const GET_PRODUCTS_FULLFILED = 'GET_PRODUCTS_FULLFILED'
 export const GET_PRODUCTS_REJECTED = 'GET_PRODUCTS_REJECTED'
+export const GET_PRODUCT_PENDING = 'GET_PRODUCT_PENDING'
+export const GET_PRODUCT_FULLFILED = 'GET_PRODUCT_FULLFILED'
+export const GET_PRODUCT_REJECTED = 'GET_PRODUCT_REJECTED'
 export const ADD_PRODUCT_PENDING = 'ADD_PRODUCT_PENDING'
 export const ADD_PRODUCT_FULLFILED = 'ADD_PRODUCT_FULLFILED'
 export const ADD_PRODUCT_REJECTED = 'ADD_PRODUCT_REJECTED'
@@ -20,7 +23,6 @@ export const getProductsThunk = () => dispatch => {
   })
   get('/products')
     .then(list => {
-      console.log("list: ", list);
       dispatch({
         type: GET_PRODUCTS_FULLFILED,
         list,
@@ -34,25 +36,43 @@ export const getProductsThunk = () => dispatch => {
     })
 }
 
+export const getProductByIdThunk = id => dispatch => {
+  dispatch({
+    type: GET_PRODUCT_PENDING
+  })
+
+  console.log(id)
+  get('/products/'+id, id)
+    .then(list => {
+      dispatch({
+        type: GET_PRODUCT_FULLFILED,
+        list,
+      })
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_PRODUCT_REJECTED,
+        error: err
+      })
+    })
+}
+
 export const addProductThunk = item => dispatch => {
   dispatch({
     type: ADD_PRODUCT_PENDING,
   })
-  console.log('add product pending')
   post('/products', item)
     .then(() => {
       dispatch({
         type: ADD_PRODUCT_FULLFILED,
         product: item
       })
-      console.log('add product fullfiled');
     })
     .catch(errMsg => {
       dispatch({
         type: ADD_PRODUCT_REJECTED,
         error: errMsg
       })
-      console.log('add product rejected');
     })
   }
 
@@ -67,6 +87,7 @@ export const editProductThunk = item => dispatch => {
         product: item,
         list: res
       })
+      this.history.push("/admin/products")
     })
     .catch(errMsg => {
       dispatch({
