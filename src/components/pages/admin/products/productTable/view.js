@@ -9,14 +9,14 @@ class AdminProductTable extends Component {
       id: this.props.id,
       name: this.props.name,
       description: this.props.description,
-      price: this.props.price
+      price: this.props.price,
+      image: this.props.image
     }
   }
 
   handleEdit = (e) => {
     e.preventDefault()
     this.props.getProductById(this.state.id)
-
   }
 
   handleDelete = (e) => {
@@ -29,8 +29,9 @@ class AdminProductTable extends Component {
           <tr>
             <td>{this.state.id}</td>
             <td>{this.state.name}</td>
-            <td>{this.state.price}</td>
+            <td>${this.state.price}</td>
             <td>{this.state.description}</td>
+            <td>{this.state.image}</td>
             <td>
               <button id="editProduct" onClick={this.handleEdit}><Link to={`/admin/products/edit/${this.state.id}`}><i className="material-icons small">edit</i></Link></button>
               <button id="deleteProduct" onClick={this.handleDelete}><i className="material-icons small">delete</i></button>

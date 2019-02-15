@@ -49,6 +49,7 @@ class AdminProductList extends Component {
                             <th>Name</th>
                             <th>Price</th>
                             <th>Description</th>
+                            <th>Image</th>
                             <th>Options</th>
                           </tr>
                         </thead>
