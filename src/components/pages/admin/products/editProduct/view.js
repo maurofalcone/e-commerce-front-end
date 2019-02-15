@@ -10,13 +10,13 @@ class EditProduct extends Component {
       name: '',
       description: '',
       price: '',
-      selectedFile:'',
+      selectedFile:null,
       redirect:false
     }
+    this.inputFile = React.createRef()
   }
 
   componentWillMount() {
-    console.log(this.props.match.params.id)
     this.props.getProductById(this.props.match.params.id)
   }
 
@@ -41,21 +41,18 @@ class EditProduct extends Component {
 
   handleSave = (e) => {
     e.preventDefault()
-    if(this.state.selectedFile !== undefined) {
+    if(this.state.selectedFile !== null) {
       const fd = new FormData()
       fd.append('image', this.state.selectedFile, this.state.selectedFile.name)
       fd.append('description', this.state.description)
       fd.append('name', this.state.name)
       fd.append('price', this.state.price)
       fd.append('id', this.props.match.params.id)
-      for (var p of fd) {
-        console.log('form data',p);
-      }
       this.props.editProduct(fd)
       this.setState({redirect:true})
     }
     else {
-      console.log('error, need to load a file')
+      
     }
   }
 
@@ -84,10 +81,10 @@ class EditProduct extends Component {
                       <label className="active" htmlFor="editProductName">Name</label>
                     </div>
                     <div className="input-field col s5">
-                      <input type="file" id="editProductImage" onChange={this.handleSelectedFile}/>
+                    <input type="file" id="editProductImage" onChange={this.handleSelectedFile}/>
                     </div>
                     <div className="input-field col s5">
-                      <input onClick={console.log(this.state)} onChange={this.onChangePrice} value={this.state.price} id="editProductPrice" type="text"/>
+                      <input onChange={this.onChangePrice} value={this.state.price} id="editProductPrice" type="text"/>
                       <label className="active" htmlFor="editProductPrice">Price</label>
                     </div>
                     <div className="input-field col s5">

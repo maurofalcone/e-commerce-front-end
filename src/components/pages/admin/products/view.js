@@ -47,7 +47,7 @@ class AdminProductList extends Component {
     }
     else if(this.props.isLoading === true) {
       return(
-        <h1>Loading...</h1>
+        <h6>Loading...</h6>
       )
     }
     else {
