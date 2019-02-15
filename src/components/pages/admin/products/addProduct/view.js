@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import ReactLoading from 'react-loading'
 import { Redirect } from 'react-router-dom'
 import "./style.css"
 
@@ -25,7 +26,6 @@ class AddProduct extends Component {
   onChangeDescription = (e) => {
     e.preventDefault()
     this.setState({description:e.target.value})
-    console.log(this.state)
   }
   onChangeImage = (e) => {
     e.preventDefault()
@@ -40,9 +40,6 @@ class AddProduct extends Component {
       fd.append('name', this.state.name)
       fd.append('price', this.state.price)
       this.props.addProduct(fd)
-      for (var p of fd) {
-        console.log(p);
-      }
     this.setState({name:'',image:'',price:'',description:'',redirect:true})
   }
 
@@ -93,7 +90,8 @@ class AddProduct extends Component {
           else {
             return (
               <div className="container">
-                <h6>Loading ...</h6>
+                  <h6>Loading</h6>
+                  <ReactLoading type="spinningBubbles" color="black" height={'5%'} width={'5%'}></ReactLoading>
               </div>
             )
           }

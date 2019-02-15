@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import ReactLoading from 'react-loading'
 import AdminProductTable from "./productTable"
 import "./style.css"
 
@@ -40,14 +41,16 @@ class AdminProductList extends Component {
 
   render() {
     if(this.props.error !== ''){
-      console.log(this.props.error)
       return (
         <h1>An error has occurred</h1>
       )
     }
     else if(this.props.isLoading === true) {
       return(
-        <h6>Loading...</h6>
+          <div className="container">
+              <h6>Loading</h6>
+              <ReactLoading type="spinningBubbles" color="black" height={'5%'} width={'5%'}></ReactLoading>
+          </div>
       )
     }
     else {

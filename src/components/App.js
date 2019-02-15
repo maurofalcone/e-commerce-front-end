@@ -15,14 +15,16 @@ class App extends Component {
       <Router>
         <div>
           <Navbar/>
-          <Route exact path="/" component={Landing}/>
-          <Route exact path="/register" component={Register}/>
-          <Route exact path="/login" component={Login}/>
-          <Route exact path="/products" component={ProductList}/>
-          <Route exact path="/categories" component={CategorieList}/>
-          <Route exact path="/admin/products" component={AdminProductList}/>
-          <Route exact path="/admin/products/add/" component={AddProduct}/>
-          <Route exact path="/admin/products/edit/:id" component={EditProduct}/>
+          <Switch>
+            <Route exact path="/" component={Landing}/>
+            <Route exact path="/register" component={Register}/>
+            <Route exact path="/login" component={Login}/>
+            <Route exact path="/products" component={ProductList}/>
+            <Route exact path="/categories" component={CategorieList}/>
+            <Route exact path="/admin/products" component={AdminProductList}/>
+            <Route exact path="/admin/products/add/" component={AddProduct}/>
+            <Route exact path="/admin/products/edit/:id" component={EditProduct}/>
+          </Switch>
         </div>
       </Router>
     )

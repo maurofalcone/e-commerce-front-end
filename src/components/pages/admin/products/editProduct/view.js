@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { Redirect } from 'react-router-dom'
+import ReactLoading from 'react-loading'
 import "./style.css"
 
 class EditProduct extends Component {
@@ -52,7 +53,7 @@ class EditProduct extends Component {
       this.setState({redirect:true})
     }
     else {
-      
+
     }
   }
 
@@ -101,7 +102,7 @@ class EditProduct extends Component {
             else {
               return (
                 <div className="container">
-                  <h6>Loading ...</h6>
+                  <h6>Loading</h6> <ReactLoading type="spinningBubbles" color="black" height={'5%'} width={'5%'}></ReactLoading>
                 </div>
               )
             }
