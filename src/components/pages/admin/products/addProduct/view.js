@@ -1,15 +1,16 @@
 import React, { Component } from "react"
+import { Redirect } from 'react-router-dom'
 import "./style.css"
 
 class AddProduct extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      id: '',
       name: '',
       description: '',
       price: '',
-      errorName:''
+      selectedFile:'',
+      redirect:false
     }
   }
 
@@ -24,6 +25,7 @@ class AddProduct extends Component {
   onChangeDescription = (e) => {
     e.preventDefault()
     this.setState({description:e.target.value})
+    console.log(this.state)
   }
   onChangeImage = (e) => {
     e.preventDefault()
@@ -32,15 +34,21 @@ class AddProduct extends Component {
 
   handleSave = (e) => {
     e.preventDefault()
-    const product = {
-      id:this.state.id,
-      name:this.state.name,
-      price:this.state.price,
-      description:this.state.description
-    }
-    this.props.addProduct(product)
-    this.setState({name:'',image:'',price:'',description:''})
-    this.props.history.push('/admin/products')
+      const fd = new FormData()
+      fd.append('image', this.state.selectedFile, this.state.selectedFile.name)
+      fd.append('description', this.state.description)
+      fd.append('name', this.state.name)
+      fd.append('price', this.state.price)
+      this.props.addProduct(fd)
+      for (var p of fd) {
+        console.log(p);
+      }
+    this.setState({name:'',image:'',price:'',description:'',redirect:true})
+  }
+
+  redirect() {
+      if(this.state.redirect === true)
+        return <Redirect to="/admin/products"/>
   }
 
   handleCancel = (e) => {
@@ -48,6 +56,10 @@ class AddProduct extends Component {
     this.setState({name:'',image:'',price:'',description:''})
     //move to products because using Link does not work correctly
     this.props.history.push('/admin/products')
+  }
+
+  handleSelectedFile = (e) => {
+      this.setState({selectedFile:e.target.files[0]})
   }
 
   render() {
@@ -64,6 +76,9 @@ class AddProduct extends Component {
                     <label htmlFor="addProductPrice">Price</label>
                   </div>
                   <div className="input-field col s5">
+                    <input type="file" id="addProductImage" onChange={this.handleSelectedFile}/>
+                  </div>
+                  <div className="input-field col s5">
                     <textarea onChange={this.onChangeDescription} value={this.state.description} id="addProductDescription" type="text"/>
                     <label htmlFor="addProductDescription">Description</label>
                     <label className="red-text">{this.state.errorName}</label>
@@ -71,6 +86,7 @@ class AddProduct extends Component {
                   <button onClick={ this.handleSave } id="addProductSave" className="btn btn-large waves-effect waves-light hoverable blue"><span className="white-text">Save</span></button>
                   <button onClick={ this.handleCancel } id="addProductCancel" className="btn btn-large waves-effect white hoverable black-text">Cancel</button>
                 </form>
+                {this.redirect()}
               </div>
             )
           }
