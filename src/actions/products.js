@@ -65,7 +65,6 @@ export const addProductThunk = item => dispatch => {
     .then(() => {
       dispatch({
         type: ADD_PRODUCT_FULLFILED,
-        product: item
       })
     })
     .catch(errMsg => {
@@ -80,20 +79,20 @@ export const editProductThunk = item => dispatch => {
   dispatch({
     type: EDIT_PRODUCT_PENDING
   })
-  put('/products/'+item.id, item.id)
-    .then((res) => {
+  console.log('edit pending');
+  put('/products/' + item.id, item)
+    .then(list => {
       dispatch({
         type: EDIT_PRODUCT_FULLFILED,
-        product: item,
-        list: res
+        list: list
       })
-      this.history.push("/admin/products")
     })
     .catch(errMsg => {
       dispatch({
         type: EDIT_PRODUCT_REJECTED,
         error: errMsg
       })
+      console.log(errMsg)
     })
 }
 
@@ -101,8 +100,9 @@ export const deleteProductThunk = id => dispatch => {
   dispatch({
     type: DELETE_PRODUCT_PENDING
   })
-  remove('/products/'+id, id)
+  remove('/products/'+id, {id:id})
     .then(() => {
+      console.log('product fullfiled');
       dispatch({
         type: DELETE_PRODUCT_FULLFILED,
         productId: id
@@ -113,5 +113,6 @@ export const deleteProductThunk = id => dispatch => {
         type: DELETE_PRODUCT_REJECTED,
         error: errMsg
       })
+      console.log(errMsg);
     })
 }

@@ -20,8 +20,7 @@ export const get = url => fetchi(url)
 export const post = (url, data) => {
   const params = {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
+    body: data,
   }
   return fetchi(url, params)
 }
@@ -29,8 +28,7 @@ export const post = (url, data) => {
 export const put = (url, data) => {
   const params = {
     method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
+    body: data,
   }
   return fetchi(url, params)
 }
