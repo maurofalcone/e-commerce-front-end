@@ -3,9 +3,6 @@ import Product from "./product"
 import './style.css'
 
 class ProductList extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentDidMount() {
     this.props.getProducts()
@@ -16,7 +13,7 @@ class ProductList extends Component {
      return ( products.map(item => (
          <Product key={item.id} id={item.id} name={item.name} price={item.price} description={item.description} image={item.image}/>
      ))
-    )
+   )
   }
 
   render() {
