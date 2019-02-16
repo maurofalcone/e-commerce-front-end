@@ -17,11 +17,11 @@ class EditProduct extends Component {
     this.inputFile = React.createRef()
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getProductById(this.props.match.params.id)
   }
 
-  componentDidMount() {
+  componentWillReceiveProps() {
       this.props.products.map(item => {
         return this.setState({ id:item.id,name:item.name,description:item.description,price:item.price })
       })
