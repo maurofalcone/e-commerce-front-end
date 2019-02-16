@@ -1,0 +1,43 @@
+#productImage {
+  object-fit: contain;
+  height: 30vh;
+}
+
+#productCard {
+  width: 20vw;
+  overflow: hidden;
+  min-width: 150px;
+  margin: 10px;
+}
+
+#productCard p {
+  font-size: 17pt;
+}
+
+@media (max-width: 700px) {
+  #productCard p, span {
+    font-size: 10pt;
+  }
+
+  #productImage {
+    height: 15vh;
+  }
+}
+
+@media (max-width: 400px) {
+  #porductCard {
+    margin-left: 5vw;
+  }
+}
+
+@media (max-width: 200px) {
+  #porductCard {
+    margin-left: 10vw;
+  }
+}
+
+@media (max-width: 100px) {
+  #porductCard {
+    margin-left: 10vw;
+  }
+}

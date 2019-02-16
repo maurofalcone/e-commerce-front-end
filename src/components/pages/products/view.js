@@ -1,11 +1,10 @@
 import React, { Component } from "react"
-import Product from "./product/view"
+import Product from "./product"
 import './style.css'
 
 class ProductList extends Component {
   constructor(props) {
     super(props)
-    console.log('constructor');
   }
 
   componentDidMount() {
@@ -15,9 +14,9 @@ class ProductList extends Component {
   mapProducts() {
     const { products } = this.props
      return ( products.map(item => (
-         <Product key={item.id} id={item.id} name={item.name} price={item.price} description={item.description}/>
+         <Product key={item.id} id={item.id} name={item.name} price={item.price} description={item.description} image={item.image}/>
      ))
-   )
+    )
   }
 
   render() {
