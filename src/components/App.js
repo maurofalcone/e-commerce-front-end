@@ -9,6 +9,10 @@ import Register from "./auth/register/view"
 import AdminProductList from "./pages/admin/products"
 import AddProduct from "./pages/admin/products/addProduct"
 import EditProduct from "./pages/admin/products/editProduct"
+import PrivateRoute from "../privateRoute/client/"
+import PrivateAdminRoute from "../privateRoute/admin/"
+import NoMatch from "./utils/noMatch"
+import Warning from "./utils/warning"
 class App extends Component {
   render() {
     return (
@@ -21,9 +25,11 @@ class App extends Component {
             <Route exact path="/login" component={Login}/>
             <Route exact path="/products" component={ProductList}/>
             <Route exact path="/categories" component={CategorieList}/>
-            <Route exact path="/admin/products" component={AdminProductList}/>
-            <Route exact path="/admin/products/add/" component={AddProduct}/>
-            <Route exact path="/admin/products/edit/:id" component={EditProduct}/>
+            <PrivateAdminRoute exact path="/admin/products" component={AdminProductList}/>
+            <PrivateAdminRoute exact path="/admin/products/add/" component={AddProduct}/>
+            <PrivateAdminRoute exact path="/admin/products/edit/:id" component={EditProduct}/>
+            <Route exact path="/warning" component={Warning}/>
+            <Route path="*" component={NoMatch}/>
           </Switch>
         </div>
       </Router>
