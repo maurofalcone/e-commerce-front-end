@@ -2,7 +2,6 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import isEmpty from 'is-empty'
 import { connect } from 'react-redux'
-
 const token = localStorage.getItem("jwtToken")
 
 const PrivateAdminRoute = ({ component: Component, ...rest }) => {

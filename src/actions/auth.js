@@ -40,13 +40,13 @@ export const loginUserThunk = userData => dispatch => {
       dispatch({
         type: LOGIN_USER_FULLFILED
       })
-      const { token } = res.data
+      console.log(res)
+      const token = res
+      console.log(token)
       localStorage.setItem("jwtToken", token)
-
-      // Set token to Auth header
-      //setAuthToken(token)
-      .set('Authorization', token)
+      //set('Authorization', token)
       // Decode token to get user data
+      console.log(jwt_decode)
       const decoded = jwt_decode(token)
       // Set current user
       dispatch(
@@ -73,8 +73,8 @@ export const logoutUserThunk = () => dispatch => {
   // Remove token from local storage
   localStorage.removeItem("jwtToken")
   // Remove auth header for future requests
-  //setAuthToken(false)
-  .set('Authorization', '')
+  let myHeader = Headers.Headers()
+  myHeader.set('Authorization', '')
   // Set current user to empty object {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}))
 }
