@@ -6,4 +6,4 @@ const mapStateToProps = state => ({
   user: state.auth.user
 })
 
-export default connect(mapStateToProps,null)(PrivateAdminRoute)
+export default connect(mapStateToProps)(PrivateAdminRoute)

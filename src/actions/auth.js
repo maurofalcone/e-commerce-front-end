@@ -34,32 +34,34 @@ export const loginUserThunk = userData => dispatch => {
   dispatch({
     type: LOGIN_USER_PENDING
   })
+  console.log('login pending')
     post("/users/login", userData)
     .then(res => {
       dispatch({
-      type: LOGIN_USER_FULLFILED
-    })
-      // Save to localStorage
-// Set token to localStorage
+        type: LOGIN_USER_FULLFILED
+      })
       const { token } = res.data
       localStorage.setItem("jwtToken", token)
+
       // Set token to Auth header
       //setAuthToken(token)
       .set('Authorization', token)
       // Decode token to get user data
       const decoded = jwt_decode(token)
       // Set current user
-      dispatch(setCurrentUser(decoded))
+      dispatch(
+        setCurrentUser(decoded)
+      )
     })
-    .catch(error =>
+    .catch(error => {
         dispatch({
           type: LOGIN_USER_REJECTED,
           errorMsg: error.data
         })
-      )
+      })
 }
 // Set logged in user
-export const setCurrentUser = decoded => {
+export const setCurrentUser = decoded => dispatch => {
   return {
     type: SET_CURRENT_USER,
     payload: decoded

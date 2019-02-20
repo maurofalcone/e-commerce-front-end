@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import CategorieList from "./pages/categories/view"
 import Landing from "./layout/landing/view"
-import Login from "./auth/login/view"
+import Login from "./auth/login/"
 import Navbar from "./layout/navbar/view"
 import ProductList from "./pages/products"
 import Register from "./auth/register/view"
@@ -10,9 +10,10 @@ import AdminProductList from "./pages/admin/products"
 import AddProduct from "./pages/admin/products/addProduct"
 import EditProduct from "./pages/admin/products/editProduct"
 import PrivateRoute from "../privateRoute/client/"
-import PrivateAdminRoute from "../privateRoute/admin/"
+import PrivateAdminRoute from "../privateRoute/admin/view"
 import NoMatch from "./utils/noMatch"
 import Warning from "./utils/warning"
+
 class App extends Component {
   render() {
     return (

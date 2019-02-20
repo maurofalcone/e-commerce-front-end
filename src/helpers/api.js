@@ -20,10 +20,20 @@ export const get = url => fetchi(url)
 export const post = (url, data) => {
   const params = {
     method: 'POST',
-    body: data,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
   }
   return fetchi(url, params)
 }
+
+//make a postfile method
+// export const post = (url, data) => {
+//   const params = {
+//     method: 'POST',
+//     body: data,
+//   }
+//   return fetchi(url, params)
+// }
 
 export const put = (url, data) => {
   const params = {

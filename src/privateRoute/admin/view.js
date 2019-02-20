@@ -1,23 +1,15 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
+import isEmpty from 'is-empty'
+import { connect } from 'react-redux'
 
-// export const PrivateAdminRoute = ({ component: Component, ...rest }) => {
-//   return (
-//     <Route {...rest} render = {props => {
-//       if(this.props.isAuthenticated) {
-//           if(this.props.user.isAdmin)
-//             return <Component {...props} />
-//       }
-//       else
-//         return <Redirect to="/login" />
-//     }} />
-//   )
-// }
+const token = localStorage.getItem("jwtToken")
+
 const PrivateAdminRoute = ({ component: Component, ...rest }) => {
   return (
     <Route {...rest} render = {props => {
-      if(true) {
-          if(false)
+      if(!isEmpty(token)) {
+          if(true)
             return <Component {...props} />
           else
             return <Redirect to="/warning" />
@@ -28,4 +20,10 @@ const PrivateAdminRoute = ({ component: Component, ...rest }) => {
   )
 }
 
-export default PrivateAdminRoute
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+})
+
+
+
+export default connect(mapStateToProps)(PrivateAdminRoute)
