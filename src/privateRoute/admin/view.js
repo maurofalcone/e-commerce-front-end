@@ -8,7 +8,7 @@ const PrivateAdminRoute = ({ component: Component, ...rest }) => {
   return (
     <Route {...rest} render = {props => {
       if(!isEmpty(token)) {
-          if(true)
+          if(this.props.user.isAdmin)
             return <Component {...props} />
           else
             return <Redirect to="/warning" />
@@ -19,10 +19,4 @@ const PrivateAdminRoute = ({ component: Component, ...rest }) => {
   )
 }
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
-})
-
-
-
-export default connect(mapStateToProps)(PrivateAdminRoute)
+export default PrivateAdminRoute

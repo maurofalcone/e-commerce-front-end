@@ -19,10 +19,7 @@ class Login extends Component {
         password: this.state.password
       }
       this.props.loginUser(userData)
-      // this.props.history.push('/')
-      console.log(userData)
-
-          console.log(this.props)
+      this.props.history.push('/admin/products')
     }
 
 

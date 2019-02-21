@@ -1,4 +1,3 @@
-import { jwt } from 'jsonwebtoken'
 import { post } from "../helpers/api"
 
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
@@ -34,29 +33,26 @@ export const loginUserThunk = userData => dispatch => {
   dispatch({
     type: LOGIN_USER_PENDING
   })
-  console.log('login pending')
     post("/users/login", userData)
     .then(res => {
       dispatch({
         type: LOGIN_USER_FULLFILED
       })
-      console.log(res)
-      console.log('decoding token')
       post('/users/checkJWT', res)
       .then(res => {
         localStorage.setItem("jwtToken", res)
-        console.log(res.data.user)
         dispatch (
            setCurrentUser(res.data.user)
          )
-      })
-      })
+         console.log('current user')
+     })
+    })
     .catch(error => {
-        dispatch({
-          type: LOGIN_USER_REJECTED,
-          errorMsg: error.data
-        })
+      dispatch({
+        type: LOGIN_USER_REJECTED,
+        errorMsg: error.data
       })
+    })
 }
 // Set logged in user
 export const setCurrentUser = decoded => dispatch => {

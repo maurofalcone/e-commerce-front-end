@@ -1,4 +1,3 @@
-import { isEmpty } from "is-empty"
 import initialState from '../initial-states/products'
 import {
   REGISTER_USER_PENDING,
