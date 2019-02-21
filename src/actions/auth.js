@@ -66,6 +66,7 @@ export const setCurrentUser = decoded => dispatch => {
 export const logoutUserThunk = () => dispatch => {
   // Remove token from local storage
   localStorage.removeItem("jwtToken")
+  localStorage.removeItem("currentUser")
   // Set current user to empty object {} which will set isAuthenticated to false
   let decoded = {}
   dispatch(setCurrentUser(decoded))
