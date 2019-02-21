@@ -1,4 +1,4 @@
-import jwt_decode from "jwt-decode"
+import { jwt } from 'jsonwebtoken'
 import { post } from "../helpers/api"
 
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
@@ -41,18 +41,16 @@ export const loginUserThunk = userData => dispatch => {
         type: LOGIN_USER_FULLFILED
       })
       console.log(res)
-      const token = res
-      console.log(token)
-      localStorage.setItem("jwtToken", token)
-      //set('Authorization', token)
-      // Decode token to get user data
-      console.log(jwt_decode)
-      const decoded = jwt_decode(token)
-      // Set current user
-      dispatch(
-        setCurrentUser(decoded)
-      )
-    })
+      console.log('decoding token')
+      post('/users/checkJWT', res)
+      .then(res => {
+        localStorage.setItem("jwtToken", res)
+        console.log(res.data.user)
+        dispatch (
+           setCurrentUser(res.data.user)
+         )
+      })
+      })
     .catch(error => {
         dispatch({
           type: LOGIN_USER_REJECTED,
@@ -72,9 +70,7 @@ export const setCurrentUser = decoded => dispatch => {
 export const logoutUserThunk = () => dispatch => {
   // Remove token from local storage
   localStorage.removeItem("jwtToken")
-  // Remove auth header for future requests
-  let myHeader = Headers.Headers()
-  myHeader.set('Authorization', '')
   // Set current user to empty object {} which will set isAuthenticated to false
-  dispatch(setCurrentUser({}))
+  let decoded = {}
+  dispatch(setCurrentUser(decoded))
 }
