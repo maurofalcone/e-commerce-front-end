@@ -44,7 +44,7 @@ export const loginUserThunk = userData => dispatch => {
         dispatch (
            setCurrentUser(res.data.user)
          )
-         console.log('current user')
+         localStorage.setItem("currentUser", JSON.stringify(res.data.user))
      })
     })
     .catch(error => {
