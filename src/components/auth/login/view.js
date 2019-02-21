@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import isEmpty from "is-empty"
+const token = localStorage.getItem("jwtToken")
 
 class Login extends Component {
   constructor() {
@@ -8,22 +10,23 @@ class Login extends Component {
       email: "",
       password: ""
     }
+    console.log(token)
   }
+
   onChange = e => {
-      this.setState({ [e.target.id]: e.target.value });
+      this.setState({ [e.target.id]: e.target.value })
     }
   onSubmit = e => {
-      e.preventDefault();
+      e.preventDefault()
       const userData = {
         email: this.state.email,
         password: this.state.password
       }
       this.props.loginUser(userData)
-      this.props.history.push('/admin/products')
     }
 
-
   render() {
+    if(!token) {
       return (
         <div className="container">
           <div style={{ marginTop: "4rem" }} className="row">
@@ -55,6 +58,18 @@ class Login extends Component {
           </div>
         </div>
       )
+    }
+    else {
+      return (
+        <div className="container">
+          <div className="col">
+            <div className="row s12">
+              <h3>You are already logged</h3>
+            </div>
+          </div>
+        </div>
+      )
+    }
   }
 }
 export default Login;
