@@ -27,13 +27,13 @@ export const post = (url, data) => {
 }
 
 //make a postfile method
-// export const post = (url, data) => {
-//   const params = {
-//     method: 'POST',
-//     body: data,
-//   }
-//   return fetchi(url, params)
-// }
+ export const postFile = (url, data) => {
+  const params = {
+    method: 'POST',
+    body: data,
+  }
+  return fetchi(url, params)
+}
 
 export const put = (url, data) => {
   const params = {
