@@ -23,9 +23,6 @@ class Landing extends Component {
         <div id="landingWrapper" className="container valign-wrapper">
           <div className="row">
             <div className="col s12 center-align">
-              <h4>
-                <button>See products</button>
-              </h4>
             </div>
           </div>
         </div>

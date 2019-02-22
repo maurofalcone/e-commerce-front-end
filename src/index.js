@@ -6,6 +6,7 @@ import rootReducer from './reducers'
 import App from './components/App'
 import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction'
 import thunk from 'redux-thunk'
+import './style.css'
 
 export default function configureStore() {
   const enhancer =  composeWithDevTools(
