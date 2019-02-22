@@ -1,29 +1,29 @@
-import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
-import isEmpty from "is-empty"
+import React, { Component } from "react"
+import { Link } from "react-router-dom"
 
 const token = localStorage.getItem("jwtToken")
 
 class Login extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       email: "",
       password: ""
     }
-    console.log(token)
   }
 
   onChange = e => {
+    e.preventDefault()
       this.setState({ [e.target.id]: e.target.value })
     }
+
   onSubmit = e => {
+    e.preventDefault()
       const userData = {
         email: this.state.email,
         password: this.state.password
       }
       this.props.loginUser(userData)
-      this.props.history.push("/")
     }
 
   render() {
@@ -32,8 +32,7 @@ class Login extends Component {
         <div className="container">
           <div id="loginRow" className="row">
             <div className="col s8 offset-s2">
-              <Link to="/" className="btn-flat waves-effect">
-                <i className="material-icons left">keyboard_backspace</i> Back to home </Link>
+              <Link to="/" className="btn-flat waves-effect"><i className="material-icons left">keyboard_backspace</i>Back to home</Link>
               <div className="col s12">
                 <h4>
                   <b>Login</b> below
@@ -42,7 +41,7 @@ class Login extends Component {
                   Don't have an account? <Link to="/register">Register</Link>
                 </p>
               </div>
-              <form noValidate onSubmit={this.onSubmit}>
+              <form>
                 <div className="input-field col s12">
                   <input onChange={this.onChange} value={this.state.email} id="email" type="email"/>
                   <label htmlFor="email">Email</label>
@@ -52,7 +51,7 @@ class Login extends Component {
                   <label htmlFor="password">Password</label>
                 </div>
                 <div className="col s12">
-                  <button id="loginBtn" type="submit" className="btn btn-large waves-effect waves-light hoverable blue accent-3"> Login </button>
+                  <button id="loginBtn" onClick={this.onSubmit} type="button" className="btn btn-large waves-effect waves-light hoverable blue accent-3"> Login </button>
                 </div>
               </form>
             </div>
