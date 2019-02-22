@@ -1,0 +1,17 @@
+#landingWrapper {
+  height: 75vh
+}
+
+#landingRegister {
+  width: 150px;
+  border-radius: 3px;
+  letter-spacing: 1.5px;
+  color:white;
+}
+
+#landingLogin {
+  margin-left: 2rem;
+  width: 150px;
+  border-radius: 3px;
+  letter-spacing: 1.5px;
+}

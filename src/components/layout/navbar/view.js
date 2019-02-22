@@ -38,7 +38,6 @@ class Navbar extends Component {
           </div>
           <div className="nav-content blue">
             <ul className="tabs tabs-transparent">
-              <li className="tab"><Link to="/categories">Categories</Link></li>
               <li className="tab"><Link to="/products">Products</Link></li>
             </ul>
           </div>
