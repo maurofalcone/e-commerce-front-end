@@ -14,7 +14,7 @@ class AdminProductList extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
       const { getProducts } = this.props
       getProducts()
   }
@@ -42,7 +42,7 @@ class AdminProductList extends Component {
   render() {
     if(this.props.error !== ''){
       return (
-        <h1>An error has occurred</h1>
+        <h1>{this.props.error}</h1>
       )
     }
     else if(this.props.isLoading === true) {
