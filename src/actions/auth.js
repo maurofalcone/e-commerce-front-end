@@ -26,7 +26,7 @@ export const registerUserThunk = (userData, history) => dispatch => {
   .catch(error => {
       dispatch({
             type: REGISTER_USER_REJECTED,
-            errorMsg: error.data
+            error: error.data
           })
         }
       )
@@ -46,7 +46,7 @@ export const loginUserThunk = userData => dispatch => {
     .catch(error => {
       dispatch({
         type: LOGIN_USER_REJECTED,
-        errorMsg: error.data
+        error: error.data
       })
     })
 }
