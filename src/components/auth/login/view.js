@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import ReactLoading from 'react-loading'
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 
 const token = localStorage.getItem("jwtToken")
 
@@ -9,7 +9,8 @@ class Login extends Component {
     super(props)
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      redirect:false
     }
   }
 
@@ -25,6 +26,7 @@ class Login extends Component {
         password: this.state.password
       }
       this.props.loginUser(userData)
+      this.setState({redirect:true})
     }
 
   render() {
@@ -71,12 +73,8 @@ class Login extends Component {
       }
       else {
         return (
-          <div className="container">
-            <div className="row">
-              <div className="col s12 center-align">
-                <h3>You are already logged</h3>
-              </div>
-            </div>
+          <div>
+            <Redirect to="/" />
           </div>
         )
       }

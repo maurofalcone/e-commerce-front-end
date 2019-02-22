@@ -21,12 +21,11 @@ export const registerUserThunk = (userData, history) => dispatch => {
     dispatch({
       type: REGISTER_USER_FULLFILED
     })
-    history.push("/login") // re-direct to login on successful register
 })
   .catch(error => {
       dispatch({
             type: REGISTER_USER_REJECTED,
-            error: error.data
+            error: error
           })
         }
       )
@@ -46,7 +45,7 @@ export const loginUserThunk = userData => dispatch => {
     .catch(error => {
       dispatch({
         type: LOGIN_USER_REJECTED,
-        error: error.data
+        error: error
       })
     })
 }
@@ -63,7 +62,6 @@ export const checkJWT = token => dispatch => {
     localStorage.setItem("jwtToken", res)
     localStorage.setItem("currentUser", JSON.stringify(res.data.user))
     dispatch(setCurrentUser(res.data))
-    history.push('/')
   })
   .catch(error => {
     dispatch({
@@ -79,7 +77,7 @@ export const setCurrentUser = data => dispatch => {
     payload: data.user,
     isAuthenticated: data.isAuthenticated
   })
-  window.location.reload()
+    window.location.reload()
 }
 
 export const logoutUserThunk = () => dispatch => {
