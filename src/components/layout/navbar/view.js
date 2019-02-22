@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import './style.css'
 const token = localStorage.getItem("jwtToken")
+const user = localStorage.getItem("currentUser")
 
 class Navbar extends Component {
 
@@ -24,12 +25,21 @@ class Navbar extends Component {
     }
   }
 
+  adminProducts() {
+     if(token && user) {
+      return(
+        <li className="tab"><Link to="/admin/products">Admin</Link></li>
+      )
+    }
+  }
+
   handleLogout = (e) => {
     e.preventDefault()
     this.props.logoutUser()
   }
 
   render() {
+    console.log(this.props.user)
     return (
         <nav className="nav-extended">
           <div className="nav-wrapper blue">
@@ -39,6 +49,7 @@ class Navbar extends Component {
           <div className="nav-content blue">
             <ul className="tabs tabs-transparent">
               <li className="tab"><Link to="/products">Products</Link></li>
+              {this.adminProducts()}
             </ul>
           </div>
         </nav>

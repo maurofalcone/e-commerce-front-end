@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { logoutUserThunk } from '../../../actions/auth'
 
 const mapStateToProps = state => ({
-  user: state.auth.user
+  user: state.auth.user,
+  auth: state.auth.isAuthenticated
 })
 
 const mapDispatchToProps = dispatch => ({
