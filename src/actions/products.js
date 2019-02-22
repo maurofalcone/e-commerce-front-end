@@ -1,4 +1,4 @@
-import { get, post, remove, put } from '../helpers/api'
+import { get, postFile, remove, put } from '../helpers/api'
 
 export const GET_PRODUCTS_PENDING = 'GET_PRODUCTS_PENDING'
 export const GET_PRODUCTS_FULLFILED = 'GET_PRODUCTS_FULLFILED'
@@ -61,7 +61,7 @@ export const addProductThunk = item => dispatch => {
   dispatch({
     type: ADD_PRODUCT_PENDING,
   })
-  post('/products', item)
+  postFile('/products', item)
     .then(() => {
       dispatch({
         type: ADD_PRODUCT_FULLFILED,
@@ -79,7 +79,6 @@ export const editProductThunk = item => dispatch => {
   dispatch({
     type: EDIT_PRODUCT_PENDING
   })
-  console.log('edit pending');
   put('/products/' + item.id, item)
     .then(list => {
       dispatch({
@@ -92,7 +91,6 @@ export const editProductThunk = item => dispatch => {
         type: EDIT_PRODUCT_REJECTED,
         error: errMsg
       })
-      console.log(errMsg)
     })
 }
 
@@ -102,7 +100,6 @@ export const deleteProductThunk = id => dispatch => {
   })
   remove('/products/'+id, {id:id})
     .then(() => {
-      console.log('product fullfiled');
       dispatch({
         type: DELETE_PRODUCT_FULLFILED,
         productId: id
@@ -113,6 +110,5 @@ export const deleteProductThunk = id => dispatch => {
         type: DELETE_PRODUCT_REJECTED,
         error: errMsg
       })
-      console.log(errMsg);
     })
 }
