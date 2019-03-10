@@ -9,7 +9,7 @@ import { registerUserThunk } from '../../../actions/auth'
   })
   
   const mapDispatchToProps = dispatch => ({
-    registerUser: (user) => { dispatch(registerUserThunk(user))},
+    registerUser: (user, history) => { dispatch(registerUserThunk(user, history))},
   })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register)

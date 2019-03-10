@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './style.css'
 const token = localStorage.getItem("jwtToken")
-const user = localStorage.getItem("currentUser")
+const aux = localStorage.getItem("currentUser")
+const user = JSON.parse(aux)
 
 class Navbar extends Component {
 
@@ -25,11 +26,13 @@ class Navbar extends Component {
     }
   }
 
-  adminProducts() {
-     if(token && user.isAdmin) {
-      return(
-        <li className="tab"><Link to="/admin/products">Admin</Link></li>
-      )
+  adminProducts() {  
+     if(token) {
+       if(user.isAdmin) {
+        return(
+          <li className="tab"><Link to="/admin/products">Admin</Link></li>
+        )
+       }
     }
   }
 

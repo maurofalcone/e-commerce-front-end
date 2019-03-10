@@ -11,7 +11,7 @@ export const CHECK_JWT_PENDING = 'CHECK_JWT_PENDING'
 export const CHECK_JWT_FULLFILED = 'CHECK_JWT_FULLFILED'
 export const CHECK_JWT_REJECTED = 'CHECK_JWT_REJECTED'
 
-export const registerUserThunk = (userData) => dispatch => {
+export const registerUserThunk = (userData, history) => dispatch => {
   dispatch({
     type: REGISTER_USER_PENDING
   })
@@ -28,6 +28,9 @@ export const registerUserThunk = (userData) => dispatch => {
         error: res.error
       })
     }
+  })
+  .then(() => {
+    history.push('/login')
   })
   .catch(error => {
       dispatch({
@@ -77,7 +80,7 @@ export const checkJWT = token => dispatch => {
         type: CHECK_JWT_FULLFILED
       })
       localStorage.setItem("jwtToken", res)
-      localStorage.setItem("currentUser", JSON.stringify(res.data.user))
+     localStorage.setItem("currentUser", JSON.stringify(res.data.user))
       dispatch(setCurrentUser(res.data))
     }
     else {
