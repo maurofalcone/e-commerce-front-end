@@ -18,7 +18,7 @@ export const registerUserThunk = (userData) => dispatch => {
   })
   post('/users/register', userData)
   .then(res => {
-    if(res.ok) {
+    if(!res.error) {
       dispatch({
         type: REGISTER_USER_FULLFILED
       })
@@ -45,7 +45,8 @@ export const loginUserThunk = userData => dispatch => {
   })
     post("/users/login", userData)
     .then(res => {
-      if(res.ok) {
+      console.log(res)
+      if(!res.error) {
         dispatch({
           type: LOGIN_USER_FULLFILED
         })
@@ -72,7 +73,7 @@ export const checkJWT = token => dispatch => {
   })
   post('/users/checkJWT', token)
   .then(res => {
-    if(res.ok) {
+    if(!res.error) {
       dispatch({
         type: CHECK_JWT_FULLFILED
       })

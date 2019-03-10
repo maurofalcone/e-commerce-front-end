@@ -22,16 +22,24 @@ export const getProductsThunk = () => dispatch => {
     type: GET_PRODUCTS_PENDING
   })
   get('/products')
-    .then(list => {
-      dispatch({
-        type: GET_PRODUCTS_FULLFILED,
-        list,
-      })
+    .then(res => {
+      if(!res.error) {
+        dispatch({
+          type: GET_PRODUCTS_FULLFILED,
+          list: res,
+        })
+      }
+      else {
+        dispatch({
+          type: GET_PRODUCTS_REJECTED,
+          error: res.error
+        })  
+      }
     })
-    .catch(err => {
+    .catch(error => {
       dispatch({
         type: GET_PRODUCTS_REJECTED,
-        error: err
+        error: error
       })
     })
 }
@@ -40,19 +48,25 @@ export const getProductByIdThunk = id => dispatch => {
   dispatch({
     type: GET_PRODUCT_PENDING
   })
-
-  console.log(id)
   get('/products/'+id, id)
-    .then(list => {
-      dispatch({
-        type: GET_PRODUCT_FULLFILED,
-        list,
-      })
+    .then(res => {
+      if(!res.error) {
+        dispatch({
+          type: GET_PRODUCT_FULLFILED,
+          list: res,
+        })
+      }
+      else {
+        dispatch({
+          type: GET_PRODUCT_REJECTED,
+          error: res.error
+        })
+      }
     })
-    .catch(err => {
+    .catch(error => {
       dispatch({
         type: GET_PRODUCT_REJECTED,
-        error: err
+        error: error
       })
     })
 }
@@ -62,15 +76,23 @@ export const addProductThunk = item => dispatch => {
     type: ADD_PRODUCT_PENDING,
   })
   postFile('/products', item)
-    .then(() => {
-      dispatch({
-        type: ADD_PRODUCT_FULLFILED,
-      })
+    .then((res) => {
+      if(!res.error) {
+        dispatch({
+          type: ADD_PRODUCT_FULLFILED,
+        })
+      }
+      else {
+        dispatch({
+          type: ADD_PRODUCT_REJECTED,
+          error: res.error
+        })  
+      }
     })
-    .catch(errMsg => {
+    .catch(error => {
       dispatch({
         type: ADD_PRODUCT_REJECTED,
-        error: errMsg
+        error: error
       })
     })
   }
@@ -80,16 +102,24 @@ export const editProductThunk = item => dispatch => {
     type: EDIT_PRODUCT_PENDING
   })
   put('/products/' + item.id, item)
-    .then(list => {
-      dispatch({
-        type: EDIT_PRODUCT_FULLFILED,
-        list: list
-      })
+    .then(res => {
+      if(!res.error) {
+        dispatch({
+          type: EDIT_PRODUCT_FULLFILED,
+          list: res
+        })
+      }
+      else {
+        dispatch({
+          type: EDIT_PRODUCT_REJECTED,
+          error: res.error
+        })  
+      }
     })
-    .catch(errMsg => {
+    .catch(error => {
       dispatch({
         type: EDIT_PRODUCT_REJECTED,
-        error: errMsg
+        error: error
       })
     })
 }
@@ -99,16 +129,24 @@ export const deleteProductThunk = id => dispatch => {
     type: DELETE_PRODUCT_PENDING
   })
   remove('/products/'+id, {id:id})
-    .then(() => {
-      dispatch({
-        type: DELETE_PRODUCT_FULLFILED,
-        productId: id
-      })
+    .then((res) => {
+      if(!res.error) {
+        dispatch({
+          type: DELETE_PRODUCT_FULLFILED,
+          productId: id
+        })
+      }
+      else {
+        dispatch({
+          type: DELETE_PRODUCT_REJECTED,
+          error: res.error
+        })
+      }
     })
-    .catch(errMsg => {
+    .catch(error => {
       dispatch({
         type: DELETE_PRODUCT_REJECTED,
-        error: errMsg
+        error: error
       })
     })
 }

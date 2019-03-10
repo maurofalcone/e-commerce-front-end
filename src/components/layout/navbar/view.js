@@ -39,7 +39,6 @@ class Navbar extends Component {
   }
 
   render() {
-    console.log(this.props.user)
     return (
         <nav className="nav-extended">
           <div className="nav-wrapper blue">
