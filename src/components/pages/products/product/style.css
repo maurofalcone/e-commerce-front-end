@@ -10,8 +10,9 @@
   margin: 10px;
 }
 
-#productCard p {
-  font-size: 17pt;
+#card-reveal-description {
+  font-size: 10pt;
+  overflow: hidden;
 }
 
 @media (max-width: 700px) {

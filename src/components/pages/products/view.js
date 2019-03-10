@@ -1,5 +1,6 @@
-import React, { Component } from "react"
-import Product from "./product"
+import React, { Component } from 'react'
+import Product from './product'
+import ReactLoading from 'react-loading'
 import './style.css'
 
 class ProductList extends Component {
@@ -17,13 +18,32 @@ class ProductList extends Component {
   }
 
   render() {
-    return (
-      <div id="containerProductList" className="container halign-wrapper">
-        <div className="row">
-          {this.mapProducts()}
-        </div>
-      </div>
-    )
+      if(this.props.isLoading) {
+        return (
+          <div className="container">
+            <h6>Loading</h6>
+            <ReactLoading type="spinningBubbles" color="black" height={'5%'} width={'5%'}></ReactLoading>
+          </div>
+        )
+      }
+      else {
+        if(this.props.error) {
+          return (
+            <div className="container">
+              <p>{this.props.error}</p>
+            </div>
+          )
+      }
+      else {
+        return (
+          <div id="containerProductList" className="container halign-wrapper">
+            <div className="row">
+              {this.mapProducts()}
+            </div>
+          </div>
+        )
+      }
+    }
   }
 }
 export default ProductList

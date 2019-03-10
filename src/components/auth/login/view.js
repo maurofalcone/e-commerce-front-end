@@ -1,6 +1,6 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 import ReactLoading from 'react-loading'
-import { Link, Redirect } from "react-router-dom"
+import { Link, Redirect } from 'react-router-dom'
 import isEmpty from 'is-empty'
 
 const token = localStorage.getItem("jwtToken")

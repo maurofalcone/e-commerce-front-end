@@ -1,7 +1,7 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import ReactLoading from 'react-loading'
-import "./style.css"
+import './style.css'
 
 class EditProduct extends Component {
   constructor(props) {
@@ -52,9 +52,6 @@ class EditProduct extends Component {
       this.props.editProduct(fd)
       this.setState({redirect:true})
     }
-    else {
-
-    }
   }
 
   redirect() {
@@ -73,41 +70,49 @@ class EditProduct extends Component {
   }
 
   render() {
-    if(this.props.isLoading === false) {
+    if(this.props.error) {
+      return (
+        <div className="container">
+          <p>{this.props.error}</p>
+        </div>
+      )
+    }
+    else { 
+      if(!this.props.isLoading) {
         return (
-              <div className="container">
-                  <form noValidate onSubmit={this.onSubmit}>
-                    <div className="input-field col s5">
-                      <input onChange={this.onChangeName} value={this.state.name} id="editProductName" type="text"/>
-                      <label className="active" htmlFor="editProductName">Name</label>
-                    </div>
-                    <div className="input-field col s5">
-                    <input type="file" id="editProductImage" onChange={this.handleSelectedFile}/>
-                    </div>
-                    <div className="input-field col s5">
-                      <input onChange={this.onChangePrice} value={this.state.price} id="editProductPrice" type="text"/>
-                      <label className="active" htmlFor="editProductPrice">Price</label>
-                    </div>
-                    <div className="input-field col s5">
-                      <textarea onChange={this.onChangeDescription} value={this.state.description} id="editProductDescription" type="text"/>
-                      <label className="active" htmlFor="editProductDescription">Description</label>
-                    </div>
-                    <button onClick={ this.handleSave } id="editProductSave" className="btn btn-large waves-effect waves-light hoverable blue"><span className="white-text">Save</span></button>
-                    <button onClick={ this.handleCancel } id="editProductCancel" className="btn btn-large waves-effect white hoverable black-text">Cancel</button>
-                  </form>
-                  {this.redirect()}
-                </div>
-              )
-            }
-            else {
-              return (
-                <div className="container">
-                  <h6>Loading</h6> <ReactLoading type="spinningBubbles" color="black" height={'5%'} width={'5%'}></ReactLoading>
-                </div>
-              )
-            }
-          }
+          <div className="container">
+            <form noValidate onSubmit={this.onSubmit}>
+              <div className="input-field col s5">
+                <input onChange={this.onChangeName} value={this.state.name} id="editProductName" type="text"/>
+                <label className="active" htmlFor="editProductName">Name</label>
+              </div>
+              <div className="input-field col s5">
+              <input type="file" id="editProductImage" onChange={this.handleSelectedFile}/>
+              </div>
+              <div className="input-field col s5">
+                <input onChange={this.onChangePrice} value={this.state.price} id="editProductPrice" type="text"/>
+                <label className="active" htmlFor="editProductPrice">Price</label>
+              </div>
+              <div className="input-field col s5">
+                <textarea onChange={this.onChangeDescription} value={this.state.description} id="editProductDescription" type="text"/>
+                <label className="active" htmlFor="editProductDescription">Description</label>
+              </div>
+              <button onClick={ this.handleSave } id="editProductSave" className="btn btn-large waves-effect waves-light hoverable blue"><span className="white-text">Save</span></button>
+              <button onClick={ this.handleCancel } id="editProductCancel" className="btn btn-large waves-effect white hoverable black-text">Cancel</button>
+            </form>
+            {this.redirect()}
+          </div>
+        )
       }
-
+      else {
+        return (
+          <div className="container">
+            <h6>Loading</h6> <ReactLoading type="spinningBubbles" color="black" height={'5%'} width={'5%'}></ReactLoading>
+          </div>
+        )
+      }
+    }
+  }
+}
 
 export default EditProduct

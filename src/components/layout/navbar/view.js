@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import './style.css'
 const token = localStorage.getItem("jwtToken")
 const user = localStorage.getItem("currentUser")

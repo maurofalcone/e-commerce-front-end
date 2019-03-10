@@ -1,8 +1,8 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 import ReactLoading from 'react-loading'
 import { Redirect } from 'react-router-dom'
 import isEmpty from 'is-empty'
-import "./style.css"
+import './style.css'
 
 class AddProduct extends Component {
   constructor(props) {
@@ -84,15 +84,13 @@ class AddProduct extends Component {
   }
 
   redirect() {
-      if(this.state.redirect === true)
+      if(this.state.redirect)
         return <Redirect to="/admin/products"/>
   }
 
   handleCancel = (e) => {
     e.preventDefault()
-    this.setState({name:'',image:'',price:'',description:''})
-    //move to products because using Link does not work correctly
-    this.props.history.push('/admin/products')
+    this.setState({name:'',image:'',price:'',description:''}, this.props.history.push('/admin/products'))
   }
 
   handleSelectedFile = (e) => {
@@ -100,54 +98,62 @@ class AddProduct extends Component {
   }
 
   render() {
-    if(this.props.isLoading === false) {
+    if(this.props.error) {
       return (
-            <div className="container">
-                <form>
-                  <div className="input-field col s5">
-                    <input onChange={this.onChangeName} value={this.state.name} id="addProductName" type="text"/>
-                    <label htmlFor="addProductName">Name</label>
-                  </div>
-                  <div>
-                    <label className="red-text">{this.state.errorName}</label>
-                  </div>
-                  <div className="input-field col s5">
-                    <input onChange={this.onChangePrice} value={this.state.price} id="addProductPrice" type="text"/>
-                    <label htmlFor="addProductPrice">Price</label>
-                  </div>
-                  <div>
-                    <label className="red-text">{this.state.errorPrice}</label>
-                  </div>
-                  <div className="input-field col s5">
-                    <input type="file" onChange={this.handleSelectedFile} id="addProductImage"/>
-                  </div>
-                  <div>
-                    <label className="red-text">{this.state.errorFile}</label>
-                  </div>
-                  <div className="input-field col s5">
-                    <textarea onChange={this.onChangeDescription} value={this.state.description} id="addProductDescription" type="text"/>
-                    <label htmlFor="addProductDescription">Description</label>
-                  </div>
-                  <div>
-                    <label className="red-text">{this.state.errorDescription}</label>
-                  </div>
-                  <button onClick={ this.handleSave } id="addProductSave" className="btn btn-large waves-effect waves-light hoverable blue"><span className="white-text">Save</span></button>
-                  <button onClick={ this.handleCancel } id="addProductCancel" className="btn btn-large waves-effect white hoverable black-text">Cancel</button>
-                </form>
-                {this.redirect()}
+        <div className="container">
+          <p>{this.props.error}</p>
+        </div>
+      )
+    }
+    else {
+      if(!this.props.isLoading) {
+        return (
+          <div className="container">
+            <form>
+              <div className="input-field col s5">
+                <input onChange={this.onChangeName} value={this.state.name} id="addProductName" type="text"/>
+                <label htmlFor="addProductName">Name</label>
               </div>
-            )
-          }
-          else {
-            return (
-              <div className="container">
-                  <h6>Loading</h6>
-                  <ReactLoading type="spinningBubbles" color="black" height={'5%'} width={'5%'}></ReactLoading>
+              <div>
+                <label className="red-text">{this.state.errorName}</label>
               </div>
-            )
-          }
-        }
+               <div className="input-field col s5">
+                <input onChange={this.onChangePrice} value={this.state.price} id="addProductPrice" type="text"/>
+                <label htmlFor="addProductPrice">Price</label>
+              </div>
+              <div>
+                <label className="red-text">{this.state.errorPrice}</label>
+              </div>
+              <div className="input-field col s5">
+                <input type="file" onChange={this.handleSelectedFile} id="addProductImage"/>
+              </div>
+              <div>
+                <label className="red-text">{this.state.errorFile}</label>
+              </div>
+              <div className="input-field col s5">
+                <textarea onChange={this.onChangeDescription} value={this.state.description} id="addProductDescription" type="text"/>
+                <label htmlFor="addProductDescription">Description</label>
+              </div>
+              <div>
+                <label className="red-text">{this.state.errorDescription}</label>
+              </div>
+              <button onClick={ this.handleSave } id="addProductSave" className="btn btn-large waves-effect waves-light hoverable blue"><span className="white-text">Save</span></button>
+              <button onClick={ this.handleCancel } id="addProductCancel" className="btn btn-large waves-effect white hoverable black-text">Cancel</button>
+            </form>
+            {this.redirect()}
+          </div>
+        )
       }
-
+      else {
+        return (
+          <div className="container">
+              <h6>Loading</h6>
+              <ReactLoading type="spinningBubbles" color="black" height={'5%'} width={'5%'}></ReactLoading>
+          </div>
+        )
+      }
+    }
+  }
+}
 
 export default AddProduct

@@ -1,7 +1,7 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 import ReactLoading from 'react-loading'
-import AdminProductTable from "./productTable"
-import "./style.css"
+import AdminProductTable from './productTable'
+import './style.css'
 
 class AdminProductList extends Component {
 
@@ -40,12 +40,12 @@ class AdminProductList extends Component {
   }
 
   render() {
-    if(this.props.error !== ''){
+    if(this.props.error){
       return (
         <h1>{this.props.error}</h1>
       )
     }
-    else if(this.props.isLoading === true) {
+    else if(this.props.isLoading) {
       return(
           <div className="container">
               <h6>Loading</h6>
