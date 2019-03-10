@@ -3,9 +3,9 @@ import { loginUserThunk } from '../../../actions/auth'
 import Login from './view'
 
 const mapStateToProps = state => ({
-  user: state.auth.user,
-  isLoading: state.auth.isLoading,
-  error: state.auth.error
+  user: state.login.user,
+  isLoading: state.login.isLoading,
+  error: state.login.error
 })
 
 const mapDispatchToProps = dispatch => ({

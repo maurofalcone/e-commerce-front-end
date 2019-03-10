@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import PrivateAdminRoute from './view'
 
 const mapStateToProps = state => ({
-  user: state.auth.user
+  user: state.login.user
 })
 
 export default connect(mapStateToProps, null)(PrivateAdminRoute)

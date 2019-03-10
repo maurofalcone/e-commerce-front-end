@@ -26,7 +26,7 @@ class Navbar extends Component {
   }
 
   adminProducts() {
-     if(token && user) {
+     if(token && user.isAdmin) {
       return(
         <li className="tab"><Link to="/admin/products">Admin</Link></li>
       )

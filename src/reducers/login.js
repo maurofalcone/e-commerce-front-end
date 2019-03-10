@@ -1,8 +1,5 @@
 import initialState from '../initial-states/products'
 import {
-  REGISTER_USER_PENDING,
-  REGISTER_USER_FULLFILED,
-  REGISTER_USER_REJECTED,
   LOGIN_USER_PENDING,
   LOGIN_USER_FULLFILED,
   LOGIN_USER_REJECTED,
@@ -15,28 +12,6 @@ import {
 const reducer = (state = initialState, action) => {
 
   switch (action.type) {
-
-    case REGISTER_USER_PENDING:
-      return {
-        ...state,
-        error: '',
-        isLoading: true
-      }
-
-    case REGISTER_USER_FULLFILED: {
-      return {
-        ...state,
-        error: '',
-        isLoading: false
-      }
-    }
-
-    case REGISTER_USER_REJECTED:
-      return {
-        ...state,
-        isLoading: false,
-        error: action.error
-      }
 
       case LOGIN_USER_PENDING:
         return {

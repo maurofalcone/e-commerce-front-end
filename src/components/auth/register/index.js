@@ -3,13 +3,13 @@ import Register from './view'
 import { registerUserThunk } from '../../../actions/auth'
   
   const mapStateToProps = state => ({
-    user: state.auth.user,
-    isLoading: state.auth.isLoading,
-    error: state.auth.error
+    user: state.register.user,
+    isLoading: state.register.isLoading,
+    error: state.register.error
   })
   
   const mapDispatchToProps = dispatch => ({
-    loginUser: (user) => { dispatch(registerUserThunk(user))},
+    registerUser: (user) => { dispatch(registerUserThunk(user))},
   })
 
-export default connect(mapStateToProps,mapDispatchToProps)(Register)
+export default connect(mapStateToProps, mapDispatchToProps)(Register)

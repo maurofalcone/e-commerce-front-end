@@ -67,7 +67,7 @@ class Login extends Component {
         return (
           <div className="container">
             <h6>Loading</h6>
-              <ReactLoading type="spinningBubbles" color="black" height={'5%'} width={'5%'}></ReactLoading>
+            <ReactLoading type="spinningBubbles" color="black" height={'5%'} width={'5%'}></ReactLoading>
           </div>
         )
       }

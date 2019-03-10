@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
-import auth from './auth'
+import login from './login'
+import register from './register'
 import products from './products'
 
 const rootReducer = combineReducers({
-  auth,
+  login,
+  register,
   products
 })
 
