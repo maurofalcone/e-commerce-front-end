@@ -12,16 +12,24 @@ export const CHECK_JWT_FULLFILED = "CHECK_JWT_FULLFILED"
 export const CHECK_JWT_REJECTED = "CHECK_JWT_REJECTED"
 
 // Register User
-export const registerUserThunk = (userData, history) => dispatch => {
+export const registerUserThunk = (userData) => dispatch => {
   dispatch({
     type: REGISTER_USER_PENDING
   })
   post('/users/register', userData)
   .then(res => {
-    dispatch({
-      type: REGISTER_USER_FULLFILED
-    })
-})
+    if(res.ok) {
+      dispatch({
+        type: REGISTER_USER_FULLFILED
+      })
+    }
+    else {
+      dispatch({
+        type: REGISTER_USER_REJECTED,
+        error: res.error
+      })
+    }
+  })
   .catch(error => {
       dispatch({
             type: REGISTER_USER_REJECTED,
@@ -37,10 +45,18 @@ export const loginUserThunk = userData => dispatch => {
   })
     post("/users/login", userData)
     .then(res => {
-      dispatch({
-        type: LOGIN_USER_FULLFILED
-      })
-      dispatch(checkJWT(res))
+      if(res.ok) {
+        dispatch({
+          type: LOGIN_USER_FULLFILED
+        })
+        dispatch(checkJWT(res))
+      }
+      else {
+        dispatch({
+          type: LOGIN_USER_REJECTED,
+          error: res.error
+        })
+      }
     })
     .catch(error => {
       dispatch({
@@ -56,12 +72,20 @@ export const checkJWT = token => dispatch => {
   })
   post('/users/checkJWT', token)
   .then(res => {
-    dispatch({
-      type: CHECK_JWT_FULLFILED
-    })
-    localStorage.setItem("jwtToken", res)
-    localStorage.setItem("currentUser", JSON.stringify(res.data.user))
-    dispatch(setCurrentUser(res.data))
+    if(res.ok) {
+      dispatch({
+        type: CHECK_JWT_FULLFILED
+      })
+      localStorage.setItem("jwtToken", res)
+      localStorage.setItem("currentUser", JSON.stringify(res.data.user))
+      dispatch(setCurrentUser(res.data))
+    }
+    else {
+      dispatch({
+        type: CHECK_JWT_REJECTED,
+        error: res.error
+      })
+    }
   })
   .catch(error => {
     dispatch({

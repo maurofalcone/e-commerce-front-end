@@ -62,6 +62,7 @@ class Register extends Component {
   }
 
   onSubmit = e => {
+    let { history } = this.props
       e.preventDefault()
       if(this.validate()) {
         const newUser = {
@@ -71,7 +72,7 @@ class Register extends Component {
           password2: this.state.password2
       }
       this.clearForm()
-      this.props.registerUser(newUser)
+      this.props.registerUser(newUser, history)
     }
   }
 

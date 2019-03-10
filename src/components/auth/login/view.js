@@ -57,7 +57,7 @@ class Login extends Component {
         password: this.state.password
       }
       this.props.loginUser(userData)
-        this.setState({ redirect:true })
+        this.setState({ redirect:true }, () => this.clearForm())
     }
  }
 

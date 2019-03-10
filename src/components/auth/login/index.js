@@ -5,7 +5,7 @@ import Login from './view'
 const mapStateToProps = state => ({
   user: state.auth.user,
   isLoading: state.auth.isLoading,
-  error: state.auth.errors
+  error: state.auth.error
 })
 
 const mapDispatchToProps = dispatch => ({
