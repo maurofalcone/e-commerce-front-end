@@ -1,0 +1,10 @@
+div.registerColumn {
+    padding-left: 11.25px;
+}
+
+div.registerColumn button {
+    width: 150px;
+    border-radius: 3px;
+    letter-spacing: 1.5px;
+    margin-top: 1rem;
+}
