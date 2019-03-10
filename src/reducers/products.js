@@ -41,7 +41,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        error: action.errorMsg
+        error: action.error
       }
 
       case GET_PRODUCT_PENDING:
@@ -64,7 +64,7 @@ const reducer = (state = initialState, action) => {
         return {
           ...state,
           isLoading: false,
-          error: action.errorMsg
+          error: action.error
         }
 
     case ADD_PRODUCT_PENDING:
@@ -91,7 +91,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        error: action.errorMsg
+        error: action.error
       }
 
       case EDIT_PRODUCT_PENDING:
@@ -112,7 +112,7 @@ const reducer = (state = initialState, action) => {
       case EDIT_PRODUCT_REJECTED:
         return {
           ...state,
-          error: action.errorMsg,
+          error: action.error,
           isLoading: false
         }
 
@@ -136,7 +136,7 @@ const reducer = (state = initialState, action) => {
     case DELETE_PRODUCT_REJECTED:
       return {
         ...state,
-        error: action.errorMsg,
+        error: action.error,
         isLoading: false
       }
 
