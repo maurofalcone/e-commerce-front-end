@@ -47,7 +47,6 @@ class AdminProductTable extends Component {
           <td>{this.state.id}</td>
           <td>{this.state.name}</td>
           <td>${this.state.price}</td>
-          <td>{this.state.description}</td>
           <td>{this.state.image}</td>
           <td>
             <button id="editProduct" onClick={this.handleEdit}><Link to={`/admin/products/edit/${this.state.id}`}><i className="material-icons small">edit</i></Link></button>

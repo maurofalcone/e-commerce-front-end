@@ -2,11 +2,6 @@
   margin-right: 5%;
 }
 
-#editProduct:hover, #deleteProduct:hover {
-  color: #2196F3;
-  cursor: pointer;
-}
-
 #editProduct, #deleteProduct {
   border-style: none;
   background-color: Transparent;
@@ -18,14 +13,14 @@
   margin-top: 10px;
 }
 
-#addProductSave {
+#editProductSave {
   width: 150px;
   border-radius: 3px;
   letter-spacing: 1.5px;
   margin-right: 2rem;
 }
 
-#addProductCancel {
+#editProductCancel {
   width: 150px;
   border-radius: 3px;
   letter-spacing: 1.5px;
