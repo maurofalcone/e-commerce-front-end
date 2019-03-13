@@ -11,12 +11,12 @@ class AddProduct extends Component {
       name: '',
       description: '',
       price: '',
-      selectedFile:'',
-      redirect:false,
-      errorName:'',
-      errorFile:'',
-      errorPrice:'',
-      errorDescription:''
+      selectedFile: '',
+      redirect: false,
+      errorName: '',
+      errorFile: '',
+      errorPrice: '',
+      errorDescription: ''
     }
   }
 
@@ -63,11 +63,6 @@ class AddProduct extends Component {
     this.setState({description:e.target.value})
     this.clearError()
   }
-  onChangeImage = (e) => {
-    e.preventDefault()
-    this.setState({image:e.target.value})
-    this.clearError()
-  }
 
   handleSave = (e) => {
     e.preventDefault()
@@ -94,7 +89,9 @@ class AddProduct extends Component {
   }
 
   handleSelectedFile = (e) => {
-      this.setState({selectedFile:e.target.files[0]})
+      e.preventDefault()
+      this.setState({selectedFile:e.target.files[0], image:e.target.value})
+      this.clearError()
   }
 
   render() {
