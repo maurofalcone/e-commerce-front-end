@@ -24,7 +24,7 @@ class Product extends Component {
               <span className="card-title activator text-darken-4">{this.state.name}<i className="material-icons right">more_vert</i></span>
               <p>
                 <i className="material-icons tiny">attach_money</i><span>{this.state.price}</span>
-                <Link to="/"><i className="material-icons right">add_shopping_cart</i></Link>
+                <i className="material-icons right">add_shopping_cart</i>
               </p>
             </div>
             <div className="card-reveal">
